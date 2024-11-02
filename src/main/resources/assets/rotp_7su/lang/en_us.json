@@ -7,5 +7,6 @@
   "action.myrotpaddon.example_stand_barrage": "Punch Barrage",
   "action.myrotpaddon.example_stand_block": "Block",
   "action.myrotpaddon.example_stand_throw_pickaxe": "Throw Pickaxe",
-  "entity.myrotpaddon.example_pickaxe": "Pickaxe"
+  "entity.myrotpaddon.example_pickaxe": "Pickaxe",
+  "rotp_7su.story_part": "7th Stand User"
 }

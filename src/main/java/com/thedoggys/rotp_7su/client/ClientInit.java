@@ -1,9 +1,7 @@
 package com.thedoggys.rotp_7su.client;
 
 import com.thedoggys.rotp_7su.AddonMain;
-import com.thedoggys.rotp_7su.client.render.ExamplePickaxeRenderer;
-import com.thedoggys.rotp_7su.client.render.ExampleStandRenderer;
-import com.thedoggys.rotp_7su.init.InitEntities;
+import com.thedoggys.rotp_7su.client.render.CardigansRenderer;
 import com.thedoggys.rotp_7su.init.InitStands;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,8 +16,6 @@ public class ClientInit {
     @SubscribeEvent
     public static void onFMLClientSetup(FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(
-                InitStands.STAND_EXAMPLE_STAND.getEntityType(), ExampleStandRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(
-                InitEntities.EXAMPLE_PICKAXE.get(), manager -> new ExamplePickaxeRenderer(manager));
+                InitStands.STAND_CARDIGANS.getEntityType(), CardigansRenderer::new);
     }
 }

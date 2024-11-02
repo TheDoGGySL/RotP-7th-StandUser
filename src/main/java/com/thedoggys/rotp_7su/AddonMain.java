@@ -1,6 +1,7 @@
 package com.thedoggys.rotp_7su;
 
 import com.thedoggys.rotp_7su.init.InitEntities;
+import com.thedoggys.rotp_7su.init.InitItems;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,5 +28,6 @@ public class AddonMain {
         InitSounds.SOUNDS.register(modEventBus);
         InitStands.ACTIONS.register(modEventBus);
         InitStands.STANDS.register(modEventBus);
+        InitItems.ITEMS.register(modEventBus);
     }
 }
