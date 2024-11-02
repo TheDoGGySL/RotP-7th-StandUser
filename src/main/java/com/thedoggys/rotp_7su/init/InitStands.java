@@ -44,7 +44,6 @@ public class InitStands {
     
     public static final RegistryObject<StandEntityAction> CARDIGANS_BARRAGE = ACTIONS.register("cardigans_barrage",
             () -> new StandEntityMeleeBarrage(new StandEntityMeleeBarrage.Builder()
-                    .holdToFire(20, false)
                     .barrageHitSound(InitSounds.CARDIGANS_PUNCH_BARRAGE)));
 
     public static final RegistryObject<StandEntityHeavyAttack> CARDIGANS_FINISHER_PUNCH = ACTIONS.register("cardigans_finisher_punch",

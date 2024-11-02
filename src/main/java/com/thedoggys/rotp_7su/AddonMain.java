@@ -1,12 +1,8 @@
 package com.thedoggys.rotp_7su;
 
-import com.thedoggys.rotp_7su.init.InitEntities;
-import com.thedoggys.rotp_7su.init.InitItems;
+import com.thedoggys.rotp_7su.init.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.thedoggys.rotp_7su.init.InitSounds;
-import com.thedoggys.rotp_7su.init.InitStands;
 
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -29,5 +25,6 @@ public class AddonMain {
         InitStands.ACTIONS.register(modEventBus);
         InitStands.STANDS.register(modEventBus);
         InitItems.ITEMS.register(modEventBus);
+        InitEffects.EFFECTS.register(modEventBus);
     }
 }
