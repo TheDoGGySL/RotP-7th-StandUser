@@ -1,3 +1,92 @@
 {
-  
+  "cardigans_ost_30": {
+    "sounds": [
+      {
+        "name": "rotp_7su:cardigans_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "cardigans_ost_60": {
+    "sounds": [
+      {
+        "name": "rotp_7su:cardigans_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "cardigans_ost_75": {
+    "sounds": [
+      {
+        "name": "rotp_7su:cardigans_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "cardigans_ost_90": {
+    "sounds": [
+      {
+        "name": "rotp_7su:cardigans_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "cardigans_ost_120": {
+    "sounds": [
+      {
+        "name": "rotp_7su:cardigans_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "cardigans_ost_full": {
+    "sounds": [
+      {
+        "name": "rotp_7su:ost/full/7su_cardigans",
+        "stream": true
+      },
+      {
+        "name": "rotp_7su:ost/full/7su_cardigans_lovefool",
+        "stream": true
+      }
+    ]
+  },
+  "cardigans_ost_cassette": {
+    "sounds": [
+      {
+        "name": "rotp_7su:cardigans_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "bandage_use": {
+    "subtitle": "rotp_7su.bandage_use",
+    "sounds": [
+      "rotp_7su:item/bandage_use"
+    ]
+  },
+  "cg_heal": {
+    "subtitle": "rotp_7su.cg_heal",
+    "sounds": [
+      "rotp_7su:stand/cg_heal"
+    ]
+  },
+  "cg_inject": {
+    "subtitle": "rotp_7su.cg_inject",
+    "sounds": [
+      "rotp_7su:stand/cg_inject"
+    ]
+  },
+  "cg_revive": {
+    "subtitle": "rotp_7su.cg_revive",
+    "sounds": [
+      "rotp_7su:stand/cg_revive"
+    ]
+  },
+  "cg_charge": {
+    "subtitle": "rotp_7su.cg_charge",
+    "sounds": [
+      "rotp_7su:stand/cg_charge"
+    ]
+  }
 }

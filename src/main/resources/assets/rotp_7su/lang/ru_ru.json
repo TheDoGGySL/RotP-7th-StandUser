@@ -1,0 +1,21 @@
+{
+  "effect.rotp_7su.anasthesia": "Анастезия",
+  "effect.rotp_7su.doping": "Допинг",
+  "effect.rotp_7su.shocked": "Электрошок",
+  "entity.rotp_7su.cardigans": "Cardigans",
+  "stand.rotp_7su.cardigans": "Cardigans",
+  "action.rotp_7su.cardigans_slash": "Взмах лезвием",
+  "action.rotp_7su.cardigans_slash_light": "Лёгкий взмах лезвием",
+  "action.rotp_7su.cardigans_cure": "Исцелить цель",
+  "action.rotp_7su.cardigans_cure_yourself": "Исцелить себя",
+  "action.rotp_7su.cardigans_antidote": "Ввести антидот",
+  "action.rotp_7su.cardigans_antidote_yourself": "Ввести антидот себе",
+  "action.rotp_7su.cardigans_shock": "Ударить током",
+  "action.rotp_7su.cardigans_anesthesia": "Анастезия для цели",
+  "action.rotp_7su.cardigans_anesthesia_yourself": "Анастезия для себя",
+  "action.rotp_7su.cardigans_dopping": "Допинг",
+  "action.rotp_7su.cardigans_block": "Блокирование",
+  "action.rotp_7su.cardigans_slash_heavy": "Сильный взмах лезвием",
+  "rotp_7su.story_part": "7th Stand User",
+  "item.rotp_7su.bandage": "Bandage"
+}

@@ -19,6 +19,21 @@ public class InitSounds {
     public static final RegistryObject<SoundEvent> CARDIGANS_SUMMON_VOICELINE = SOUNDS.register("cardigans_summon_voiceline", 
             () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "cardigans_summon_voiceline")));
 
+    public static final RegistryObject<SoundEvent> BANDAGE_USE = SOUNDS.register("bandage_use",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "bandage_use")));
+
+    public static final RegistryObject<SoundEvent> CARDIGANS_HEAL = SOUNDS.register("cg_heal",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "cg_heal")));
+
+    public static final RegistryObject<SoundEvent> CARDIGANS_INJECT = SOUNDS.register("cg_inject",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "cg_inject")));
+
+    public static final RegistryObject<SoundEvent> CARDIGANS_REVIVE = SOUNDS.register("cg_revive",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "cg_revive")));
+
+    public static final RegistryObject<SoundEvent> CARDIGANS_CHARGE = SOUNDS.register("cg_charge",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "cg_charge")));
+
     public static final Supplier<SoundEvent> CARDIGANS_SUMMON_SOUND = ModSounds.STAND_SUMMON_DEFAULT;
     
     public static final Supplier<SoundEvent> CARDIGANS_UNSUMMON_SOUND = ModSounds.STAND_UNSUMMON_DEFAULT;

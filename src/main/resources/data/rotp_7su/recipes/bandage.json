@@ -1,0 +1,25 @@
+{
+    "type": "jojo:crafting_shaped_stand",
+    "pattern": [
+        "#",
+        "W",
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "W": {
+            "item": "minecraft:white_wool"
+        }
+    },
+    "stand": [
+        {
+            "name": "rotp_7su:cardigans"
+        }
+        ],
+    "result": {
+        "item": "rotp_7su:bandage",
+        "count": 1
+    }
+}
