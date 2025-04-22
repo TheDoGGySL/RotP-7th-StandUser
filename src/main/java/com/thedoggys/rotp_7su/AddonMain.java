@@ -24,6 +24,7 @@ public class AddonMain {
         InitSounds.SOUNDS.register(modEventBus);
         InitStands.ACTIONS.register(modEventBus);
         InitStands.STANDS.register(modEventBus);
+        InitStandEffects.STAND_EFFECTS.register(modEventBus);
         InitItems.ITEMS.register(modEventBus);
         InitEffects.EFFECTS.register(modEventBus);
     }

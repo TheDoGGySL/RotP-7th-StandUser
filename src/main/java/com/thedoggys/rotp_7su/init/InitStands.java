@@ -1,7 +1,11 @@
 package com.thedoggys.rotp_7su.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.github.standobyte.jojo.action.Action;
 import com.github.standobyte.jojo.action.stand.*;
+import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityType;
 import com.github.standobyte.jojo.init.ModSounds;
 import com.github.standobyte.jojo.init.power.stand.EntityStandRegistryObject;
@@ -13,12 +17,20 @@ import com.github.standobyte.jojo.util.mod.StoryPart;
 import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.action.*;
 import com.thedoggys.rotp_7su.entity.CardigansEntity;
+import com.thedoggys.rotp_7su.entity.SpecialsEntity;
+import com.thedoggys.rotp_7su.specials.SpecialsStandType;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Util;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 
+@EventBusSubscriber(modid = AddonMain.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class InitStands {
     @SuppressWarnings("unchecked")
     public static final DeferredRegister<Action<?>> ACTIONS = DeferredRegister.create(
@@ -148,6 +160,115 @@ public class InitStands {
                     .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
                     .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND))
             .withDefaultStandAttributes();
+    
+    
+    
+    // ======================================== Specials ========================================
+    
+    public static final RegistryObject<StandEntityLightAttack> SPECIALS_PUNCH = ACTIONS.register("specials_punch", 
+            () -> new StandEntityLightAttack(new StandEntityLightAttack.Builder()));
+    
+    public static final RegistryObject<StandEntityMeleeBarrage> SPECIALS_BARRAGE = ACTIONS.register("specials_barrage", 
+            () -> new StandEntityMeleeBarrage(new StandEntityMeleeBarrage.Builder()));
+    
+    public static final RegistryObject<StandEntityHeavyAttack> SPECIALS_HEAVY_PUNCH = ACTIONS.register("specials_heavy_punch", 
+            () -> new StandEntityHeavyAttack(new StandEntityHeavyAttack.Builder()
+                    .partsRequired(StandPart.ARMS)
+                    .shiftVariationOf(SPECIALS_PUNCH).shiftVariationOf(SPECIALS_BARRAGE)));
+    
+    public static final RegistryObject<StandEntityBlock> SPECIALS_BLOCK = ACTIONS.register("specials_block", 
+            () -> new StandEntityBlock());
+    
+    public static final RegistryObject<StandAction> SPECIALS_PICK_ENTITY = ACTIONS.register("specials_pick_entity", 
+            () -> new SpecialsPickEntityAbility(new StandAction.Builder()));
+    
+    
+    /* 
+     * This is kinda an exceptional case, so we register the Stand type and the entity types separately, the old way, 
+     * instead of using the EntityStandRegistryObject utility class.
+     */
+    
+    public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_0 = InitEntities.ENTITIES.register("specials0", 
+            () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
+            .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
+            .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+    
+    public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_1 = InitEntities.ENTITIES.register("specials1", 
+            () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
+            .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
+            .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+    
+    public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_2 = InitEntities.ENTITIES.register("specials2", 
+            () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
+            .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
+            .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+    
+    public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_3 = InitEntities.ENTITIES.register("specials3", 
+            () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
+            .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
+            .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+    
+    public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_4 = InitEntities.ENTITIES.register("specials4", 
+            () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
+            .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
+            .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+    
+    public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_5 = InitEntities.ENTITIES.register("specials5", 
+            () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
+            .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
+            .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+    
+    public static final List<RegistryObject<StandEntityType<? extends SpecialsEntity>>> SPECIALS_ENTITY_TYPES = Util.make(new ArrayList<>(), list -> {
+        list.add(SPECIALS_0);
+        list.add(SPECIALS_1);
+        list.add(SPECIALS_2);
+        list.add(SPECIALS_3);
+        list.add(SPECIALS_4);
+        list.add(SPECIALS_5);
+    });
+
+    public static final double[] specialsXOffsets = {-0.866,  0, 0.866, 0.866, 0, -0.866};
+    public static final double[] specialsZOffsets = {  -0.5, -1,  -0.5,   0.5, 1,    0.5};
+    
+    public static final RegistryObject<SpecialsStandType> STAND_SPECIALS = STANDS.register("specials", 
+            () -> new SpecialsStandType(new EntityStandType.Builder<StandStats>()
+                    .color(0x8E45FF)
+                    .storyPartName(InitStands.SEVENTH_STAND_USER.getName())
+                    .leftClickHotbar(
+                            SPECIALS_PUNCH.get(),
+                            SPECIALS_BARRAGE.get()
+                            )
+                    .rightClickHotbar(
+                            SPECIALS_BLOCK.get(),
+                            SPECIALS_PICK_ENTITY.get()
+                            )
+                    .defaultStats(StandStats.class, new StandStats.Builder()
+                            .power(16.0, 18.5)
+                            .speed(16.0, 19.0)
+                            .range(2.0, 10.0)
+                            .durability(16.0, 20.0)
+                            .precision(20.0)
+                            )
+                    .addSummonShout(ModSounds.JOTARO_STAR_PLATINUM)
+                    .addOst(ModSounds.STAR_PLATINUM_OST)));
+    
+    
+    @SubscribeEvent
+    public static void createDefaultStandAttributes(EntityAttributeCreationEvent event) {
+        for (RegistryObject<StandEntityType<? extends SpecialsEntity>> entityType : SPECIALS_ENTITY_TYPES) {
+            event.put(entityType.get(), StandEntity.createAttributes().build());
+        }
+    }
+    
+    @SubscribeEvent
+    public static final void afterStandsRegister(FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            for (RegistryObject<StandEntityType<? extends SpecialsEntity>> entityType : SPECIALS_ENTITY_TYPES) {
+                entityType.get().setStandType(STAND_SPECIALS);
+            }
+            STAND_SPECIALS.get().setEntityType(SPECIALS_0);
+        });
+    }
 
 
 
