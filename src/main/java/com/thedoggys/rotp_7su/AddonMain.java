@@ -1,6 +1,9 @@
 package com.thedoggys.rotp_7su;
 
+import com.thedoggys.rotp_7su.capability.CapabilityHandler;
 import com.thedoggys.rotp_7su.init.*;
+import com.thedoggys.rotp_7su.network.AddonPackets;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,5 +30,13 @@ public class AddonMain {
         InitStandEffects.STAND_EFFECTS.register(modEventBus);
         InitItems.ITEMS.register(modEventBus);
         InitEffects.EFFECTS.register(modEventBus);
+        modEventBus.addListener(this::preInit);
+    }
+    private void preInit(FMLCommonSetupEvent event){
+        AddonPackets.init();
+        CapabilityHandler.commonSetupRegister();
+    }
+    public static Logger getLogger() {
+        return LOGGER;
     }
 }

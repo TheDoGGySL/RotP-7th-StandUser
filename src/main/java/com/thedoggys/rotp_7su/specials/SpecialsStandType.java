@@ -22,13 +22,13 @@ public class SpecialsStandType extends EntityStandType<StandStats> {
     public SpecialsStandType(AbstractBuilder<?, StandStats> arg0) {
         super(arg0);
     }
-    
+
     @Override
     public boolean summon(LivingEntity user, IStandPower standPower, Consumer<StandEntity> beforeTheSummon, boolean withoutNameVoiceLine, boolean addToWorld) {
         if (!standPower.canUsePower()) {
             return false;
         }
-        
+
 //        if (!withoutNameVoiceLine && !user.isShiftKeyDown()) {
 //            SoundEvent shout = summonShoutSupplier.get();
 //            if (shout != null) {
@@ -36,7 +36,7 @@ public class SpecialsStandType extends EntityStandType<StandStats> {
 //            }
 //        }
         triggerAdvancement(standPower, standPower.getStandManifestation());
-        
+
         if (!user.level.isClientSide()) {
             SpecialsEntities summonedEntities = getSpecialsEntities(standPower).orElse(null);
             if (summonedEntities == null) {
@@ -44,25 +44,25 @@ public class SpecialsStandType extends EntityStandType<StandStats> {
                 standPower.getContinuousEffects().addEffect(summonedEntities);
             }
             summonedEntities.setIsSummoned(true);
-            
+
             for (int i = 0; i < InitStands.SPECIALS_ENTITY_TYPES.size(); i++) {
                 StandEntityType<?> entityType = InitStands.SPECIALS_ENTITY_TYPES.get(i).get();
                 SpecialsEntity standEntity = (SpecialsEntity) entityType.create(user.level);
                 StandRelativeOffset offset = StandRelativeOffset.withYOffset(InitStands.specialsXOffsets[i], 0.2, InitStands.specialsZOffsets[i]);
                 standEntity.setDefaultOffsetFromUser(offset);
-                
+
                 standEntity.copyPosition(user);
                 standEntity.setUserAndPower(user, standPower);
                 summonedEntities.addSpecialsEntity(standEntity);
                 beforeTheSummon.accept(standEntity);
-                
+
                 if (addToWorld) {
                     finalizeStandSummonFromAction(user, standPower, standEntity, true);
                 }
-                
+
                 standEntity.onStandSummonServerSide();
             }
-            
+
             summonedEntities.onSummon();
         }
         return true;
@@ -96,12 +96,12 @@ public class SpecialsStandType extends EntityStandType<StandStats> {
             StandUtil.setManualControl(ClientUtil.getClientPlayer(), false, false);
         }
     }
-    
+
     public static Optional<SpecialsEntities> getSpecialsEntities(IStandPower standPower) {
         return standPower.getContinuousEffects().getEffects()
                 .filter(effects -> effects.effectType == InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get())
                 .map(effect -> (SpecialsEntities) effect)
                 .findFirst();
     }
-    
+
 }

@@ -88,5 +88,79 @@
     "sounds": [
       "rotp_7su:stand/cg_charge"
     ]
+  },
+  "axe_swing": {
+    "subtitle": "rotp_7su.axe_swing",
+    "sounds": [
+      "rotp_7su:stand/axe_swing"
+    ]
+  },
+  "red_garland_aura": {
+    "subtitle": "rotp_7su.red_garland_aura",
+    "sounds": [
+      "rotp_7su:stand/red_garland_aura"
+    ]
+  },
+  "red_garland_aura_boom": {
+    "subtitle": "rotp_7su.red_garland_aura_boom",
+    "sounds": [
+      "rotp_7su:stand/red_garland_aura_boom"
+    ]
+  },
+  "red_garland_ost_30": {
+    "sounds": [
+      {
+        "name": "rotp_7su:red_garland_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "red_garland_ost_60": {
+    "sounds": [
+      {
+        "name": "rotp_7su:red_garland_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "red_garland_ost_75": {
+    "sounds": [
+      {
+        "name": "rotp_7su:red_garland_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "red_garland_ost_90": {
+    "sounds": [
+      {
+        "name": "rotp_7su:red_garland_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "red_garland_ost_120": {
+    "sounds": [
+      {
+        "name": "rotp_7su:red_garland_ost_full",
+        "type": "event"
+      }
+    ]
+  },
+  "red_garland_ost_full": {
+    "sounds": [
+      {
+        "name": "rotp_7su:ost/full/7su_red_garland",
+        "stream": true
+      }
+    ]
+  },
+  "red_garland_ost_cassette": {
+    "sounds": [
+      {
+        "name": "rotp_7su:red_garland_ost_full",
+        "type": "event"
+      }
+    ]
   }
 }

@@ -52,6 +52,8 @@ public class CardigansHeal extends StandEntityAction {
                             livingTarget.removeEffect(Effects.POISON);
                             livingTarget.removeEffect(Effects.WITHER);
                             livingTarget.removeEffect(Effects.HUNGER);
+                            livingTarget.removeEffect(Effects.MOVEMENT_SLOWDOWN);
+                            livingTarget.removeEffect(Effects.DIG_SLOWDOWN);
                             livingTarget.removeEffect(Effects.CONFUSION);
                             userPower.getUser().removeEffect(Effects.BLINDNESS);
                         }

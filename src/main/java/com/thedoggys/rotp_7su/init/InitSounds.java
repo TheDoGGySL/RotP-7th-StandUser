@@ -34,18 +34,25 @@ public class InitSounds {
     public static final RegistryObject<SoundEvent> CARDIGANS_CHARGE = SOUNDS.register("cg_charge",
             () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "cg_charge")));
 
+    public static final RegistryObject<SoundEvent> AXE_SWING = SOUNDS.register("axe_swing",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "axe_swing")));
+
+    public static final RegistryObject<SoundEvent> RED_GARLAND_AURA = SOUNDS.register("red_garland_aura",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "red_garland_aura")));
+
+    public static final RegistryObject<SoundEvent> RED_GARLAND_AURA_BOOM = SOUNDS.register("red_garland_aura_boom",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "red_garland_aura_boom")));
+
     public static final Supplier<SoundEvent> CARDIGANS_SUMMON_SOUND = ModSounds.STAND_SUMMON_DEFAULT;
     
     public static final Supplier<SoundEvent> CARDIGANS_UNSUMMON_SOUND = ModSounds.STAND_UNSUMMON_DEFAULT;
     
     public static final Supplier<SoundEvent> CARDIGANS_PUNCH_LIGHT = ModSounds.STAND_PUNCH_LIGHT;
     
-    public static final Supplier<SoundEvent> CARDIGANS_PUNCH_HEAVY = ModSounds.STAND_PUNCH_HEAVY;
-    
-    public static final Supplier<SoundEvent> CARDIGANS_PUNCH_BARRAGE = ModSounds.STAND_PUNCH_LIGHT;
-    
-    public static final Supplier<SoundEvent> CARDIGANS_THROW_PICKAXE = ModSounds.STAND_PUNCH_LIGHT;
-    
+
     public static final OstSoundList CARDIGANS_OST = new OstSoundList(
             new ResourceLocation(AddonMain.MOD_ID, "cardigans_ost"), SOUNDS);
+
+    public static final OstSoundList RED_GARLAND_OST = new OstSoundList(
+            new ResourceLocation(AddonMain.MOD_ID, "red_garland_ost"), SOUNDS);
 }

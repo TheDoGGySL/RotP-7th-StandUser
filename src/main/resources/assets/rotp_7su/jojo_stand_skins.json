@@ -1,0 +1,16 @@
+{
+  "skins": {
+    "rotp_7su:skina": {
+      "stand_type": "rotp_7su:cardigans",
+      "color": "0x2bbfff"
+    },
+    "rotp_7su:skinb": {
+      "stand_type": "rotp_7su:joykiller",
+      "color": "0x2bbfff"
+    },
+    "rotp_7su:skinc": {
+      "stand_type": "rotp_7su:red_garland",
+      "color": "0xF54227"
+    }
+  }
+}

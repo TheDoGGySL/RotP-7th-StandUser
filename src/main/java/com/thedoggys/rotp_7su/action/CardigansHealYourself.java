@@ -29,6 +29,8 @@ public class CardigansHealYourself extends StandEntityAction {
                 userPower.getUser().removeEffect(Effects.POISON);
                 userPower.getUser().removeEffect(Effects.WITHER);
                 userPower.getUser().removeEffect(Effects.HUNGER);
+                userPower.getUser().removeEffect(Effects.DIG_SLOWDOWN);
+                userPower.getUser().removeEffect(Effects.MOVEMENT_SLOWDOWN);
                 userPower.getUser().removeEffect(Effects.CONFUSION);
                 userPower.getUser().removeEffect(Effects.BLINDNESS);
             }

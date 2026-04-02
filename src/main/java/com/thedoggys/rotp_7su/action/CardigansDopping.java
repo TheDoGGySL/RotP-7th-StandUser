@@ -18,7 +18,7 @@ public class CardigansDopping extends StandEntityAction {
     public void standPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task) {
         if (!world.isClientSide) {
             standEntity.playSound(InitSounds.CARDIGANS_INJECT.get(), 1f, 1f);
-            userPower.getUser().addEffect(new EffectInstance(InitEffects.DOPING_EFFECT.get(), 200, 0, false, false));
+            userPower.getUser().addEffect(new EffectInstance(InitEffects.DOPING_EFFECT.get(), 450, 0, false, false));
             // standEntity.playSound(InitSounds.SPICE_GIRL_ABILITY_FIRST.get(),1.0f,1.0f);
         }
     }

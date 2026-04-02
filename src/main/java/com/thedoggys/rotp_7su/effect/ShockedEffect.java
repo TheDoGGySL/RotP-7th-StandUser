@@ -1,8 +1,12 @@
 package com.thedoggys.rotp_7su.effect;
 
 import com.github.standobyte.jojo.potion.IApplicableEffect;
+import com.github.standobyte.jojo.potion.StunEffect;
+import com.github.standobyte.jojo.util.mc.reflection.CommonReflection;
 import com.thedoggys.rotp_7su.AddonMain;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -14,9 +18,9 @@ import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = AddonMain.MOD_ID)
-public class ShockedEffect extends Effect implements IApplicableEffect {
+public class ShockedEffect extends StunEffect {
     public ShockedEffect(int color) {
-        super(EffectType.BENEFICIAL, color);
+        super(color);
     }
 
     @Override
@@ -31,6 +35,11 @@ public class ShockedEffect extends Effect implements IApplicableEffect {
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amp) {
+        super.applyEffectTick(entity, amp);
+        if (entity instanceof CreeperEntity) {
+            CreeperEntity creeper = (CreeperEntity) entity;
+            CommonReflection.setCreeperSwell(creeper, -1);
+        }
         int multiplier = 0;
         for(ItemStack i : entity.getArmorSlots()){
             IEnergyStorage energyStorage = i.getCapability(CapabilityEnergy.ENERGY).orElse(null);
@@ -57,6 +66,6 @@ public class ShockedEffect extends Effect implements IApplicableEffect {
 
     @Override
     public boolean isApplicable(LivingEntity entity) {
-        return true;
+        return super.isApplicable(entity) && !(entity instanceof MobEntity && ((MobEntity) entity).isNoAi());
     }
 }
