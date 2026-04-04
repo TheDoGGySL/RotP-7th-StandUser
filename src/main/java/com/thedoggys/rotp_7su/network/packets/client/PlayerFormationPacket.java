@@ -1,7 +1,10 @@
 package com.thedoggys.rotp_7su.network.packets.client;
 
 import com.github.standobyte.jojo.network.packets.IModPacketHandler;
+import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.thedoggys.rotp_7su.capability.LivingDataProvider;
+import com.thedoggys.rotp_7su.init.power.InitStandEffects;
+import com.thedoggys.rotp_7su.specials.SpecialsEntities;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -33,10 +36,8 @@ public class PlayerFormationPacket {
             context.enqueueWork(() -> {
                 ServerPlayerEntity player = context.getSender();
                 if (player != null) {
-                    player.getCapability(LivingDataProvider.CAPABILITY).resolve().ifPresent(cap -> {
-                        cap.setFormation(msg.formation);
-                        System.out.println("Formation received on server: " + msg.formation);
-                    });
+                    SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower(player).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+                    specialsEntities.pickEntity(msg.formation);
                 }
             });
             context.setPacketHandled(true);

@@ -38,10 +38,10 @@ public enum FormationType {
     public int getFormationType() {
         return this.formationType;
     }
+
     public static FormationType getByFormationType(int FormationType){
         List<FormationType> types = Arrays.stream(values()).filter(type -> type.getFormationType() == FormationType).collect(Collectors.toList());
         Optional<FormationType> matchType = types.stream().findFirst();
-        System.out.println(types.stream().count());
         return matchType.orElse(null);
     }
 

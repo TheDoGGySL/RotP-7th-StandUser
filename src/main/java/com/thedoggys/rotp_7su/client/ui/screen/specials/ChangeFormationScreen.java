@@ -1,13 +1,17 @@
 package com.thedoggys.rotp_7su.client.ui.screen.specials;
 
 import com.github.standobyte.jojo.client.InputHandler;
+import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.capability.LivingDataProvider;
+import com.thedoggys.rotp_7su.init.power.InitStandEffects;
 import com.thedoggys.rotp_7su.network.AddonPackets;
 import com.thedoggys.rotp_7su.network.packets.client.FSyncPacket;
+import com.thedoggys.rotp_7su.network.packets.client.PlayerFormationPacket;
+import com.thedoggys.rotp_7su.specials.SpecialsEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.chat.NarratorChatListener;
 import net.minecraft.client.gui.screen.Screen;
@@ -40,14 +44,27 @@ public class ChangeFormationScreen extends Screen {
             mc.setScreen(screen);
         }
     }
+
+    private int getPreviouslyPickedEntity(){
+        Minecraft mc = Minecraft.getInstance();
+        SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower(mc.player).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+        return specialsEntities.getSpecialsPreviousPickedEntity();
+    }
+
+    private int getPickedEntity(){
+        Minecraft mc = Minecraft.getInstance();
+        SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower(mc.player).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+        return specialsEntities.getSpecialsPickedEntity();
+    }
+
+    private void pickEntity(int index){
+        AddonPackets.sendToServer(new PlayerFormationPacket(index));
+    }
+
     public Optional<FormationType> getPreviousHovered(){
         Minecraft mc = Minecraft.getInstance();
         if (mc.player.getCapability(LivingDataProvider.CAPABILITY).resolve().isPresent()){
-            int prevType = mc.player
-                    .getCapability(LivingDataProvider.CAPABILITY)
-                    .resolve()
-                    .get()
-                    .getPrevFormation();
+            int prevType = getPreviouslyPickedEntity();
             if (prevType > -1){
                 return FormationType.getFromFormationType(FormationType.getByFormationType(prevType));
             }
@@ -72,11 +89,7 @@ public class ChangeFormationScreen extends Screen {
                 this.previousHovered
                         .isPresent()
                         ? this.previousHovered
-                        : FormationType.getFromFormationType(FormationType.getByFormationType(minecraft.player
-                        .getCapability(LivingDataProvider.CAPABILITY)
-                        .resolve()
-                        .get()
-                        .getFormation()));
+                        : FormationType.getFromFormationType(FormationType.getByFormationType(getPickedEntity()));
 
         this.slots.clear();
         for (int i = 0; i < FormationType.VALUES.length; ++i) {
@@ -125,10 +138,7 @@ public class ChangeFormationScreen extends Screen {
         return false;
     }
     private void switchToHoveredFormationTypeAndClose(Minecraft minecraft, Optional<FormationType> hovered){
-        minecraft.player.getCapability(LivingDataProvider.CAPABILITY).ifPresent(capability -> {
-            capability.setFormation(hovered.get().formationType);
-            AddonPackets.sendToServer(new FSyncPacket(minecraft.player.getId(), hovered.get().formationType));
-        });
+        pickEntity(hovered.get().formationType);
         minecraft.setScreen(null);
     }
 }

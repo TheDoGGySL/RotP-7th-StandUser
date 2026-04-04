@@ -13,6 +13,7 @@ import com.thedoggys.rotp_7su.init.power.InitStandEffects;
 
 public class SpecialsEntities extends StandEffectInstance {
     private int specialsPickedEntity = 0;
+    private int specialsPreviousPickedEntity = 0;
     private boolean isSummoned;
     public final List<StandEntity> specialsEntities = new ArrayList<>();
 
@@ -26,6 +27,14 @@ public class SpecialsEntities extends StandEffectInstance {
     
     public void addSpecialsEntity(StandEntity entity) {
         specialsEntities.add(entity);
+    }
+
+    public int getSpecialsPreviousPickedEntity(){
+        return specialsPreviousPickedEntity;
+    }
+
+    public int getSpecialsPickedEntity(){
+        return specialsPickedEntity;
     }
     
     public void setIsSummoned(boolean isSummoned) {
@@ -45,6 +54,7 @@ public class SpecialsEntities extends StandEffectInstance {
     }
     
     public void pickEntity(int index) {
+        this.specialsPreviousPickedEntity = this.specialsPickedEntity;
         this.specialsPickedEntity = index;
         if (isSummoned) {
             if (specialsEntities.isEmpty()) {
