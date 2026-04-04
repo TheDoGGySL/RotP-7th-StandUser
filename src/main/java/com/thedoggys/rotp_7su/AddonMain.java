@@ -2,6 +2,8 @@ package com.thedoggys.rotp_7su;
 
 import com.thedoggys.rotp_7su.capability.CapabilityHandler;
 import com.thedoggys.rotp_7su.init.*;
+import com.thedoggys.rotp_7su.init.power.InitStandEffects;
+import com.thedoggys.rotp_7su.init.power.InitStands;
 import com.thedoggys.rotp_7su.network.AddonPackets;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.apache.logging.log4j.LogManager;

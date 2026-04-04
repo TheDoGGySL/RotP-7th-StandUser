@@ -162,5 +162,17 @@
         "type": "event"
       }
     ]
+  },
+  "miracles_summon": {
+    "subtitle": "rotp_7su.miracles_summon",
+    "sounds": [
+      "rotp_7su:stand/miracles_summon"
+    ]
+  },
+  "miracles_unsummon": {
+    "subtitle": "rotp_7su.miracles_unsummon",
+    "sounds": [
+      "rotp_7su:stand/miracles_unsummon"
+    ]
   }
 }

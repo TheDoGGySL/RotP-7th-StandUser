@@ -40,5 +40,11 @@
   "action.rotp_7su.red_garland_block": "Block",
   "action.rotp_7su.red_garland_uppercut": "Finisher Punch",
   "stand.rotp_7su.red_garland": "Red Garland",
-  "stand.rotp_7su.the_joykiller": "Joykiller"
+  "stand.rotp_7su.the_joykiller": "The Joykiller",
+  "stand.rotp_7su.miracles": "Miracles",
+  "action.rotp_7su.miracles_aura": "Erase Presence",
+  "action.rotp_7su.wipe_presence": "Wipe Presence",
+  "jojo.message.action_condition.stand_not_active": "You need your stand to be summoned",
+  "jojo.message.action_condition.not_enough_stamina": "You need more stamina to perform this action",
+  "jojo.message.action_condition.aura_already_active": "You already have other aura enabled"
 }

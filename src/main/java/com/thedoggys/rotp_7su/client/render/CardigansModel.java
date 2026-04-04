@@ -4,7 +4,7 @@ import com.github.standobyte.jojo.client.render.entity.model.stand.HumanoidStand
 import com.github.standobyte.jojo.client.render.entity.pose.*;
 import com.thedoggys.rotp_7su.entity.CardigansEntity;
 
-import com.thedoggys.rotp_7su.init.InitStands;
+import com.thedoggys.rotp_7su.init.power.InitStands;
 import net.minecraft.client.renderer.model.ModelRenderer;
 
 import javax.annotation.Nullable;

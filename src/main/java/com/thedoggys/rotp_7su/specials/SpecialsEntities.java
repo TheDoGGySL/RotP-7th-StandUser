@@ -9,7 +9,7 @@ import com.github.standobyte.jojo.action.stand.effect.StandEffectType;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.network.PacketManager;
 import com.github.standobyte.jojo.network.packets.fromserver.TrSetStandEntityPacket;
-import com.thedoggys.rotp_7su.init.InitStandEffects;
+import com.thedoggys.rotp_7su.init.power.InitStandEffects;
 
 public class SpecialsEntities extends StandEffectInstance {
     private int specialsPickedEntity = 0;

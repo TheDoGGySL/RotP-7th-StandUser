@@ -4,6 +4,7 @@ import com.github.standobyte.jojo.network.packets.IModPacketHandler;
 import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.network.packets.client.FSyncPacket;
 import com.thedoggys.rotp_7su.network.packets.client.PlayerFormationPacket;
+import com.thedoggys.rotp_7su.network.packets.server.MiraclesAura2Packet;
 import com.thedoggys.rotp_7su.network.packets.server.MiraclesAuraPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -43,6 +44,8 @@ public class AddonPackets {
         registerMessage(clientChannel, new FSyncPacket.Handler(), Optional.of(NetworkDirection.PLAY_TO_SERVER));
         channel.registerMessage(packetIndex++, MiraclesAuraPacket.class,
                 MiraclesAuraPacket::encode,MiraclesAuraPacket::decode,MiraclesAuraPacket::handle);
+        channel.registerMessage(packetIndex++, MiraclesAura2Packet.class,
+                MiraclesAura2Packet::encode, MiraclesAura2Packet::decode,MiraclesAura2Packet::handle);
 
     }
 

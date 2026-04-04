@@ -1,4 +1,4 @@
-package com.thedoggys.rotp_7su.init;
+package com.thedoggys.rotp_7su.init.power;
 
 import com.github.standobyte.jojo.action.Action;
 import com.github.standobyte.jojo.action.stand.*;
@@ -16,6 +16,8 @@ import com.thedoggys.rotp_7su.action.*;
 import com.thedoggys.rotp_7su.entity.*;
 
 //import com.thedoggys.rotp_7su.specials.SpecialsStandType;
+import com.thedoggys.rotp_7su.init.InitEntities;
+import com.thedoggys.rotp_7su.init.InitSounds;
 import com.thedoggys.rotp_7su.specials.SpecialsStandType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
@@ -315,7 +317,6 @@ public class InitStands {
                     .standPose(JoykillerAxeThrow.THROW_ANIM)
                     .holdToFire(20, true)
                     .standRecoveryTicks(20)
-                    .standSound(ModSounds.KNIFE_THROW)
                     .staminaCost(75)
                     .partsRequired(StandPart.ARMS)));
 
@@ -360,7 +361,11 @@ public class InitStands {
 
     public static final RegistryObject<StandEntityAction> MIRACLES_AURA = ACTIONS.register("miracles_aura",
             () -> new MiraclesErasePresence(new StandEntityAction.Builder()
-                    .standUserWalkSpeed(1.0F).cooldown(20)
+                    .standUserWalkSpeed(1.0F).cooldown(20).staminaCostTick(2)
+            ));
+    public static final RegistryObject<StandEntityAction> MIRACLES_WIPE = ACTIONS.register("miracles_wipe_presence",
+            () -> new MiraclesWipePresence(new StandEntityAction.Builder()
+                    .standUserWalkSpeed(1.0F).cooldown(20).staminaCostTick(1)
             ));
     public static final RegistryObject<StandEntityAction> MIRACLES_SIZZLE = ACTIONS.register("miracles_sizzle",
             () -> new MiraclesSizzle(new StandEntityAction.Builder()
@@ -380,6 +385,7 @@ public class InitStands {
                                     MIRACLES_SIZZLE.get()
                             )
                             .rightClickHotbar(
+                                    MIRACLES_WIPE.get(),
                                     MIRACLES_AURA.get()
                             )
                             .defaultStats(StandStats.class, new StandStats.Builder()
@@ -395,8 +401,8 @@ public class InitStands {
 
                     InitEntities.ENTITIES,
                     () -> new StandEntityType<MiraclesEntity>(MiraclesEntity::new, 0.7F, 2.1F)
-                            .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
-                            .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND))
+                            .summonSound(InitSounds.MIRACLES_SUMMON)
+                            .unsummonSound(InitSounds.MIRACLES_UNSUMMON))
                     .withDefaultStandAttributes();
 
 

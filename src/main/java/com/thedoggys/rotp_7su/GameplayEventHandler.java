@@ -3,12 +3,11 @@ package com.thedoggys.rotp_7su;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.thedoggys.rotp_7su.capability.LivingDataProvider;
 import com.thedoggys.rotp_7su.init.InitEffects;
-import com.thedoggys.rotp_7su.init.InitStands;
+import com.thedoggys.rotp_7su.init.power.InitStands;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -17,22 +16,11 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import static com.thedoggys.rotp_7su.AddonMain.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GameplayEventHandler {
     private static final String DAMAGE_TAG = MOD_ID + "_stored_damage";
-
-    private static boolean isMiraclesActive(PlayerEntity player) {
-        return IStandPower.getStandPowerOptional(player)
-                .resolve()
-                .map(power -> power.getType() == InitStands.STAND_MIRACLES.getStandType())
-                .orElse(false);
-    }
 
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
@@ -64,11 +52,7 @@ public class GameplayEventHandler {
     @SubscribeEvent
     public static void onJump(LivingEvent.LivingJumpEvent event) {
         if (event.getEntityLiving().hasEffect(InitEffects.SHOCKED.get())) {
-            event.getEntityLiving().setDeltaMovement(
-                    0,
-                    0,
-                    0
-            );
+            event.getEntityLiving().setDeltaMovement(0, 0, 0);
         }
     }
 
@@ -81,13 +65,13 @@ public class GameplayEventHandler {
 
     @SubscribeEvent
     public static void onMobTarget(LivingSetAttackTargetEvent event) {
-        if ((event.getEntityLiving() instanceof MobEntity || event.getEntityLiving() instanceof PlayerEntity)) {
-            PlayerEntity target = (PlayerEntity) event.getTarget();
-            target.getCapability(LivingDataProvider.CAPABILITY).ifPresent(data -> {
-                if (data.isGentlyWeeps() && isMiraclesActive(target)) {
-                    ((MobEntity) event.getEntityLiving()).setTarget(null);
-                }
-            });
-        }
+        if (!(event.getEntityLiving() instanceof MobEntity)) return;
+        if (!(event.getTarget() instanceof PlayerEntity)) return;
+        PlayerEntity target = (PlayerEntity) event.getTarget();
+        target.getCapability(LivingDataProvider.CAPABILITY).ifPresent(data -> {
+            if (data.isGentlyWeeps()) {
+                ((MobEntity) event.getEntityLiving()).setTarget(null);
+            }
+        });
     }
 }

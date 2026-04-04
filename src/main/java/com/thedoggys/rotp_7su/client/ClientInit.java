@@ -9,7 +9,7 @@ import com.thedoggys.rotp_7su.client.render.*;
 import com.thedoggys.rotp_7su.init.InitEffects;
 import com.thedoggys.rotp_7su.init.InitEntities;
 import com.thedoggys.rotp_7su.init.InitParticles;
-import com.thedoggys.rotp_7su.init.InitStands;
+import com.thedoggys.rotp_7su.init.power.InitStands;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;

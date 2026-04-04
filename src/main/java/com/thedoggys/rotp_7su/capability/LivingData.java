@@ -1,6 +1,7 @@
 package com.thedoggys.rotp_7su.capability;
 
 import com.thedoggys.rotp_7su.network.AddonPackets;
+import com.thedoggys.rotp_7su.network.packets.server.MiraclesAura2Packet;
 import com.thedoggys.rotp_7su.network.packets.server.MiraclesAuraPacket;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -89,10 +90,11 @@ public class LivingData implements INBTSerializable<CompoundNBT> {
     public boolean isGentlyWeeps() {
         return this.gentlyWeeps;
     }
+
     public void setWipePresence(boolean wipePresence) {
         this.wipePresence = wipePresence;
         if(entity instanceof ServerPlayerEntity){
-            AddonPackets.sendToClient(new MiraclesAuraPacket(entity.getId(),wipePresence),(ServerPlayerEntity) entity);
+            AddonPackets.sendToClient(new MiraclesAura2Packet(entity.getId(),wipePresence),(ServerPlayerEntity) entity);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.thedoggys.rotp_7su.init;
+package com.thedoggys.rotp_7su.init.power;
 
 import com.github.standobyte.jojo.action.stand.effect.StandEffectType;
 import com.thedoggys.rotp_7su.AddonMain;

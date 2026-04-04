@@ -12,8 +12,8 @@ import com.github.standobyte.jojo.power.impl.stand.StandUtil;
 import com.github.standobyte.jojo.power.impl.stand.stats.StandStats;
 import com.github.standobyte.jojo.power.impl.stand.type.EntityStandType;
 import com.thedoggys.rotp_7su.entity.SpecialsEntity;
-import com.thedoggys.rotp_7su.init.InitStandEffects;
-import com.thedoggys.rotp_7su.init.InitStands;
+import com.thedoggys.rotp_7su.init.power.InitStandEffects;
+import com.thedoggys.rotp_7su.init.power.InitStands;
 
 import net.minecraft.entity.LivingEntity;
 

@@ -5,7 +5,7 @@ import com.github.standobyte.jojo.util.mc.reflection.ClientReflection;
 import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.capability.LivingDataProvider;
 import com.thedoggys.rotp_7su.init.InitEffects;
-import com.thedoggys.rotp_7su.init.InitStands;
+import com.thedoggys.rotp_7su.init.power.InitStands;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;

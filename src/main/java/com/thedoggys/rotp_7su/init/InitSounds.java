@@ -40,6 +40,12 @@ public class InitSounds {
     public static final RegistryObject<SoundEvent> RED_GARLAND_AURA = SOUNDS.register("red_garland_aura",
             () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "red_garland_aura")));
 
+    public static final RegistryObject<SoundEvent> MIRACLES_SUMMON = SOUNDS.register("miracles_summon",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "miracles_summon")));
+
+    public static final RegistryObject<SoundEvent> MIRACLES_UNSUMMON = SOUNDS.register("miracles_unsummon",
+            () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "miracles_unsummon")));
+
     public static final RegistryObject<SoundEvent> RED_GARLAND_AURA_BOOM = SOUNDS.register("red_garland_aura_boom",
             () -> new SoundEvent(new ResourceLocation(AddonMain.MOD_ID, "red_garland_aura_boom")));
 

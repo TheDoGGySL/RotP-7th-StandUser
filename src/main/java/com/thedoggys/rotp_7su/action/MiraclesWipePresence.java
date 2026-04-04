@@ -1,6 +1,7 @@
 package com.thedoggys.rotp_7su.action;
 
 import com.github.standobyte.jojo.action.ActionConditionResult;
+import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityAction;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
@@ -16,39 +17,63 @@ import net.minecraftforge.common.util.LazyOptional;
 import javax.annotation.Nullable;
 
 public class MiraclesWipePresence extends StandEntityAction {
-    public MiraclesWipePresence(Builder builder) {
+    public MiraclesWipePresence(StandEntityAction.Builder builder) {
         super(builder);
     }
 
+    @Override
+    protected ActionConditionResult checkSpecificConditions(LivingEntity user, IStandPower power, ActionTarget target) {
+        LazyOptional<LivingData> data = user.getCapability(LivingDataProvider.CAPABILITY);
+        boolean gentlyActive = data.map(LivingData::isGentlyWeeps).orElse(false);
+        boolean wipeActive = data.map(LivingData::isWipePresence).orElse(false);
+
+        if (wipeActive) {
+            return ActionConditionResult.POSITIVE;
+        }
+        if (!power.isActive()) {
+            return conditionMessage("stand_not_active");
+        }
+        if (power.getStamina() < power.getMaxStamina() * 0.2f) {
+            return conditionMessage("not_enough_stamina");
+        }
+        if (gentlyActive) {
+            return conditionMessage("aura_already_active");
+        }
+        return ActionConditionResult.POSITIVE;
+    }
 
     @Override
-    public void standPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task){
-        if(!world.isClientSide){
+    public void standPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task) {
+        if (!world.isClientSide) {
             LivingEntity standUser = userPower.getUser();
             LazyOptional<LivingData> playerDataOptional = standUser.getCapability(LivingDataProvider.CAPABILITY);
-            playerDataOptional.ifPresent(playerData ->{
-                boolean isGently = playerData.isWipePresence();
-                playerData.setWipePresence(!isGently);
+            playerDataOptional.ifPresent(playerData -> {
+                if (playerData.isGentlyWeeps()) {
+                    playerData.setGentlyWeeps(false);
+                }
+                boolean isWiping = playerData.isWipePresence();
+                playerData.setWipePresence(!isWiping);
             });
         }
     }
+
     @Override
     public boolean greenSelection(IStandPower power, ActionConditionResult conditionCheck) {
         LivingEntity standUser = power.getUser();
         LazyOptional<LivingData> playerDataOptional = standUser.getCapability(LivingDataProvider.CAPABILITY);
-        return playerDataOptional.map(LivingData::isWipePresence).isPresent()?playerDataOptional.map(LivingData::isWipePresence).get() :false;
+        boolean auraActive = playerDataOptional.map(LivingData::isWipePresence).orElse(false);
+        return auraActive && power.isActive() && power.getStamina() >= power.getMaxStamina() * 0.2f;
     }
 
-    ResourceLocation UN_REFLECT = new ResourceLocation(AddonMain.MOD_ID,"textures/action/miracles_aura_off.png");
+    private final ResourceLocation UN_REFLECT = new ResourceLocation(AddonMain.MOD_ID, "textures/action/miracles_aura_off.png");
 
     @Override
     public ResourceLocation getIconTexture(@Nullable IStandPower power) {
+        if (power == null) return super.getIconTexture(null);
         LivingEntity standUser = power.getUser();
         LazyOptional<LivingData> playerDataOptional = standUser.getCapability(LivingDataProvider.CAPABILITY);
-        boolean activated = playerDataOptional.map(LivingData::isWipePresence).isPresent()?playerDataOptional.map(LivingData::isWipePresence).get() :false;
-        if(!activated){
-            return super.getIconTexture(power);
-        }
-        return UN_REFLECT;
+        boolean activated = playerDataOptional.map(LivingData::isWipePresence).orElse(false);
+        return activated ? UN_REFLECT : super.getIconTexture(power);
     }
 }
+
