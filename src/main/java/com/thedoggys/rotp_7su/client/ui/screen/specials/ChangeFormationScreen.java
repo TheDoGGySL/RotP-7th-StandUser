@@ -57,6 +57,9 @@ public class ChangeFormationScreen extends Screen {
     }
 
     private void pickEntity(int index){
+        Minecraft mc = Minecraft.getInstance();
+        SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower(mc.player).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+        specialsEntities.pickEntity(index);
         AddonPackets.sendToServer(new PlayerFormationPacket(index));
     }
 
@@ -137,6 +140,7 @@ public class ChangeFormationScreen extends Screen {
         return false;
     }
     private void switchToHoveredFormationTypeAndClose(Minecraft minecraft, Optional<FormationType> hovered){
+
         pickEntity(hovered.get().formationType);
         minecraft.setScreen(null);
     }

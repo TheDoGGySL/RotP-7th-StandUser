@@ -37,13 +37,11 @@ public abstract class StandTypeMixin {
     @Inject(method = "getIconTexture(Lcom/github/standobyte/jojo/power/impl/stand/IStandPower;)Lnet/minecraft/util/ResourceLocation;", at = @At("RETURN"), cancellable = true)
     private void onGetIconTexture(@Nullable IStandPower power, CallbackInfoReturnable<ResourceLocation> cir) {
         if (power != null) {
-            IStandManifestation stand = power.getStandManifestation();
-            if (stand instanceof SpecialsEntity) {
-                int act = ((SpecialsEntity) stand).getSpecialsIndex();
-                System.out.println("sosal " + act);
-                if (act >= 0 && act < rotp7suAddon_main$specialsFormTextures.length) {
-                    cir.setReturnValue(rotp7suAddon_main$specialsFormTextures[act]);
-                }
+            SpecialsEntities specials = power.getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+            int act = specials.getSpecialsPickedEntity();
+            System.out.println("sosal: " + act);
+            if (act >= 0 && act < rotp7suAddon_main$specialsFormTextures.length) {
+                cir.setReturnValue(rotp7suAddon_main$specialsFormTextures[act]);
             }
         }
     }
