@@ -7,6 +7,7 @@ import com.github.standobyte.jojo.power.impl.stand.type.StandType;
 import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.entity.SpecialsEntity;
 import com.thedoggys.rotp_7su.init.power.InitStandEffects;
+import com.thedoggys.rotp_7su.init.power.InitStands;
 import com.thedoggys.rotp_7su.specials.SpecialsEntities;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -36,7 +37,7 @@ public abstract class StandTypeMixin {
 
     @Inject(method = "getIconTexture(Lcom/github/standobyte/jojo/power/impl/stand/IStandPower;)Lnet/minecraft/util/ResourceLocation;", at = @At("RETURN"), cancellable = true)
     private void onGetIconTexture(@Nullable IStandPower power, CallbackInfoReturnable<ResourceLocation> cir) {
-        if (power != null) {
+        if (power != null && power.getType() == InitStands.STAND_SPECIALS.get()) {
             SpecialsEntities specials = power.getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
             int act = specials.getSpecialsPickedEntity();
             System.out.println("sosal: " + act);
