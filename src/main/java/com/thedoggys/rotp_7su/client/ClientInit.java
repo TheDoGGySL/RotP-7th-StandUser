@@ -5,7 +5,8 @@ import com.github.standobyte.jojo.client.particle.HamonSparkParticle;
 import com.github.standobyte.jojo.client.particle.custom.CustomParticlesHelper;
 import com.github.standobyte.jojo.client.resources.CustomResources;
 import com.thedoggys.rotp_7su.AddonMain;
-import com.thedoggys.rotp_7su.client.render.*;
+import com.thedoggys.rotp_7su.client.render.model.SpecialsModel;
+import com.thedoggys.rotp_7su.client.render.renderer.*;
 import com.thedoggys.rotp_7su.init.InitEffects;
 import com.thedoggys.rotp_7su.init.InitEntities;
 import com.thedoggys.rotp_7su.init.InitParticles;
@@ -35,6 +36,8 @@ public class ClientInit {
                 InitStands.STAND_RED_GARLAND.getEntityType(), RedGarlandRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(
                 InitEntities.JOYKILLER_AXE.get(), manager -> new AxeRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(InitEntities.BULLET.get(), BulletRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntities.KNIFE.get(), ButterflyRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(
                 InitStands.STAND_MIRACLES.getEntityType(), MiraclesRenderer::new);
         for (int i = 0; i < InitStands.SPECIALS_ENTITY_TYPES.size(); i++) {

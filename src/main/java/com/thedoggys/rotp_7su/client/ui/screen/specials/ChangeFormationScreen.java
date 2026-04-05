@@ -9,7 +9,6 @@ import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.capability.LivingDataProvider;
 import com.thedoggys.rotp_7su.init.power.InitStandEffects;
 import com.thedoggys.rotp_7su.network.AddonPackets;
-import com.thedoggys.rotp_7su.network.packets.client.FSyncPacket;
 import com.thedoggys.rotp_7su.network.packets.client.PlayerFormationPacket;
 import com.thedoggys.rotp_7su.specials.SpecialsEntities;
 import net.minecraft.client.Minecraft;

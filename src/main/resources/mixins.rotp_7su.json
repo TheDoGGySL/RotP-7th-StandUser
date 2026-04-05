@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.thedoggys.rotp_7su.mixin",
+  "refmap": "mixins.rotp_7su.refmap.json",
+  "minVersion": "0.8",
+  "mixins": [
+    "StandTypeMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

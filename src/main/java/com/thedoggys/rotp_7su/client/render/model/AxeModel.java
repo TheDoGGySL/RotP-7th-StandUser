@@ -1,4 +1,4 @@
-package com.thedoggys.rotp_7su.client.render;
+package com.thedoggys.rotp_7su.client.render.model;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;

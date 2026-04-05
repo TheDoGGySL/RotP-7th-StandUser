@@ -1,9 +1,10 @@
-package com.thedoggys.rotp_7su.client.render;
+package com.thedoggys.rotp_7su.client.render.renderer;
 
 import com.github.standobyte.jojo.client.render.entity.model.stand.StandEntityModel;
 import com.github.standobyte.jojo.client.render.entity.model.stand.StandModelRegistry;
 import com.github.standobyte.jojo.client.render.entity.renderer.stand.StandEntityRenderer;
 import com.thedoggys.rotp_7su.AddonMain;
+import com.thedoggys.rotp_7su.client.render.model.CardigansModel;
 import com.thedoggys.rotp_7su.entity.CardigansEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;

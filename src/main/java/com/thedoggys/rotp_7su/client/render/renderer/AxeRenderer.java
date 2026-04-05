@@ -1,7 +1,8 @@
-package com.thedoggys.rotp_7su.client.render;
+package com.thedoggys.rotp_7su.client.render.renderer;
 
 import com.github.standobyte.jojo.client.render.entity.renderer.SimpleEntityRenderer;
 import com.thedoggys.rotp_7su.AddonMain;
+import com.thedoggys.rotp_7su.client.render.model.AxeModel;
 import com.thedoggys.rotp_7su.entity.AxeEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;

@@ -52,5 +52,4 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
         double forward = additionalData.readDouble();
         setDefaultOffsetFromUser(StandRelativeOffset.withYOffset(left, 0.2, forward));
     }
-
 }

@@ -1,9 +1,7 @@
-package com.thedoggys.rotp_7su.client.render;
+package com.thedoggys.rotp_7su.client.render.model;
 
 import com.github.standobyte.jojo.client.render.entity.model.stand.HumanoidStandModel;
-import com.thedoggys.rotp_7su.entity.JoykillerEntity;
 import com.thedoggys.rotp_7su.entity.RedGarlandEntity;
-import net.minecraft.client.renderer.model.ModelRenderer;
 
 public class RedGarlandModel extends HumanoidStandModel<RedGarlandEntity> {
 

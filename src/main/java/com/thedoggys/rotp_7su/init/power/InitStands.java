@@ -15,7 +15,6 @@ import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.action.*;
 import com.thedoggys.rotp_7su.entity.*;
 
-//import com.thedoggys.rotp_7su.specials.SpecialsStandType;
 import com.thedoggys.rotp_7su.init.InitEntities;
 import com.thedoggys.rotp_7su.init.InitSounds;
 import com.thedoggys.rotp_7su.specials.SpecialsStandType;
@@ -193,6 +192,15 @@ public class InitStands {
     public static final RegistryObject<StandAction> SPECIALS_PICK_ENTITY = ACTIONS.register("specials_pick_entity",
             () -> new SpecialsPickEntityAbility(new StandAction.Builder()));
 
+    public static final RegistryObject<StandEntityAction> SPECIALS_SHOOT = ACTIONS.register("specials_shoot",
+            () -> new SpecialsOrangeShoot(new StandEntityAction.Builder().cooldown(10).standOffsetFront().holdType()));
+
+    public static final RegistryObject<StandEntityAction> SPECIALS_THROW = ACTIONS.register("specials_throw",
+            () -> new SpecialsYellowThrow(new StandEntityAction.Builder().standOffsetFront().holdToFire(15, false)));
+
+    public static final RegistryObject<StandEntityAction> SPECIALS_GRENADE = ACTIONS.register("specials_grenade",
+            () -> new SpecialsBlueGrenade(new StandEntityAction.Builder().standOffsetFront().holdToFire(15, false)));
+
 
     /*
      * This is kinda an exceptional case, so we register the Stand type and the entity types separately, the old way,
@@ -201,33 +209,33 @@ public class InitStands {
 
     public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_0 = InitEntities.ENTITIES.register("specials0",
             () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
-                    .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
-                    .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+                    .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
+                    .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND));
 
     public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_1 = InitEntities.ENTITIES.register("specials1",
             () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
-                    .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
-                    .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+                    .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
+                    .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND));
 
     public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_2 = InitEntities.ENTITIES.register("specials2",
             () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
-                    .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
-                    .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+                    .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
+                    .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND));
 
     public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_3 = InitEntities.ENTITIES.register("specials3",
             () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
-                    .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
-                    .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+                    .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
+                    .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND));
 
     public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_4 = InitEntities.ENTITIES.register("specials4",
             () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
-                    .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
-                    .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+                    .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
+                    .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND));
 
     public static final RegistryObject<StandEntityType<? extends SpecialsEntity>> SPECIALS_5 = InitEntities.ENTITIES.register("specials5",
             () -> new StandEntityType<SpecialsEntity>(SpecialsEntity::new, 0.6F, 1.8F)
-                    .summonSound(ModSounds.STAR_PLATINUM_SUMMON)
-                    .unsummonSound(ModSounds.STAR_PLATINUM_UNSUMMON));
+                    .summonSound(InitSounds.CARDIGANS_SUMMON_SOUND)
+                    .unsummonSound(InitSounds.CARDIGANS_UNSUMMON_SOUND));
 
     public static final List<RegistryObject<StandEntityType<? extends SpecialsEntity>>> SPECIALS_ENTITY_TYPES = Util.make(new ArrayList<>(), list -> {
         list.add(SPECIALS_0);
@@ -238,12 +246,12 @@ public class InitStands {
         list.add(SPECIALS_5);
     });
 
-    public static final double[] specialsXOffsets = {-0.866, 0, 0.866, 0.866, 0, -0.866};
-    public static final double[] specialsZOffsets = {-0.5, -1, -0.5, 0.5, 1, 0.5};
+    public static final double[] specialsXOffsets = {-0.866, 0, 0.866, 1, 0, -0.866};
+    public static final double[] specialsZOffsets = {-0.5, -1, -0.5, -1.5, -2, -1.5};
 
     public static final RegistryObject<SpecialsStandType> STAND_SPECIALS = STANDS.register("specials",
             () -> new SpecialsStandType(new EntityStandType.Builder<StandStats>()
-                    .color(0x8E45FF)
+                    .color(0xB5B5B5)
                     .storyPartName(InitStands.SEVENTH_STAND_USER.getName())
                     .leftClickHotbar(
                             SPECIALS_PUNCH.get(),
@@ -251,18 +259,20 @@ public class InitStands {
                     )
                     .rightClickHotbar(
                             SPECIALS_BLOCK.get(),
-                            SPECIALS_PICK_ENTITY.get()
+                            SPECIALS_PICK_ENTITY.get(),
+                            SPECIALS_SHOOT.get(),
+                            SPECIALS_THROW.get(),
+                            SPECIALS_GRENADE.get()
                     )
                     .defaultStats(StandStats.class, new StandStats.Builder()
-                            .power(16.0, 18.5)
-                            .speed(16.0, 19.0)
+                            .power(9.0, 10)
+                            .speed(9.0, 10.0)
                             .range(2.0, 10.0)
-                            .durability(16.0, 20.0)
-                            .precision(20.0)
+                            .durability(15.0, 16.0)
+                            .precision(10.0)
                     )
                     .addSummonShout(ModSounds.JOTARO_STAR_PLATINUM)
                     .addOst(ModSounds.STAR_PLATINUM_OST)));
-
 
     @SubscribeEvent
     public static void createDefaultStandAttributes(EntityAttributeCreationEvent event) {
@@ -315,7 +325,7 @@ public class InitStands {
             () -> new JoykillerAxeThrow(new StandEntityAction.Builder()
                     .resolveLevelToUnlock(2)
                     .standPose(JoykillerAxeThrow.THROW_ANIM)
-                    .holdToFire(20, true)
+                    .holdToFire(20, false)
                     .standRecoveryTicks(20)
                     .staminaCost(75)
                     .partsRequired(StandPart.ARMS)));

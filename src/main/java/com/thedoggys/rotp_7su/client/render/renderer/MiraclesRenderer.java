@@ -1,46 +1,32 @@
-package com.thedoggys.rotp_7su.client.render;
+package com.thedoggys.rotp_7su.client.render.renderer;
 
 import com.github.standobyte.jojo.client.render.entity.model.stand.StandEntityModel;
 import com.github.standobyte.jojo.client.render.entity.model.stand.StandModelRegistry;
 import com.github.standobyte.jojo.client.render.entity.renderer.stand.StandEntityRenderer;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
-import com.github.standobyte.jojo.entity.stand.StandEntityType;
-import com.github.standobyte.jojo.entity.stand.StandRelativeOffset;
-import com.github.standobyte.jojo.entity.stand.stands.StarPlatinumEntity;
-import com.github.standobyte.jojo.init.power.stand.ModStandsInit;
-import com.github.standobyte.jojo.util.mc.entitysubtype.EntitySubtype;
-import com.github.standobyte.jojo.util.mc.entitysubtype.EntityTypeToInstance;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.thedoggys.rotp_7su.AddonMain;
-import com.thedoggys.rotp_7su.capability.LivingData;
 import com.thedoggys.rotp_7su.capability.LivingDataProvider;
+import com.thedoggys.rotp_7su.client.render.model.MiraclesModel;
 import com.thedoggys.rotp_7su.entity.MiraclesEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MiraclesRenderer extends StandEntityRenderer<MiraclesEntity, StandEntityModel<MiraclesEntity>> {
 

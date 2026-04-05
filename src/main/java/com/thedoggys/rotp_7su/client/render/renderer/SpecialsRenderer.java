@@ -1,4 +1,4 @@
-package com.thedoggys.rotp_7su.client.render;
+package com.thedoggys.rotp_7su.client.render.renderer;
 
 import java.util.function.Supplier;
 

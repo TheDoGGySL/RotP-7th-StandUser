@@ -1,4 +1,4 @@
-package com.thedoggys.rotp_7su.client.render;
+package com.thedoggys.rotp_7su.client.render.model;
 
 import com.github.standobyte.jojo.client.render.entity.model.stand.HumanoidStandModel;
 import com.thedoggys.rotp_7su.entity.SpecialsEntity;

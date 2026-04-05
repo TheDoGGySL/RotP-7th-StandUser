@@ -11,12 +11,12 @@ import net.minecraft.util.ResourceLocation;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class FormationIcon {
-    private static ResourceLocation FIRST = new ResourceLocation(AddonMain.MOD_ID, "textures/action/first.png");
-    private static ResourceLocation SECOND = new ResourceLocation(AddonMain.MOD_ID, "textures/action/second.png");
-    private static ResourceLocation THIRD = new ResourceLocation(AddonMain.MOD_ID, "textures/action/third.png");
-    private static ResourceLocation FOURTH = new ResourceLocation(AddonMain.MOD_ID, "textures/action/fourth.png");
-    private static ResourceLocation FIFTH = new ResourceLocation(AddonMain.MOD_ID, "textures/action/fifth.png");
-    private static ResourceLocation SIXTH = new ResourceLocation(AddonMain.MOD_ID, "textures/action/sixth.png");
+    private static ResourceLocation FIRST = new ResourceLocation(AddonMain.MOD_ID, "textures/power/sp1.png");
+    private static ResourceLocation SECOND = new ResourceLocation(AddonMain.MOD_ID, "textures/power/sp2.png");
+    private static ResourceLocation THIRD = new ResourceLocation(AddonMain.MOD_ID, "textures/power/sp3.png");
+    private static ResourceLocation FOURTH = new ResourceLocation(AddonMain.MOD_ID, "textures/power/sp4.png");
+    private static ResourceLocation FIFTH = new ResourceLocation(AddonMain.MOD_ID, "textures/power/sp5.png");
+    private static ResourceLocation SIXTH = new ResourceLocation(AddonMain.MOD_ID, "textures/power/sp6.png");
 
     public static ResourceLocation getIconByType(FormationType type){
         switch (type){
