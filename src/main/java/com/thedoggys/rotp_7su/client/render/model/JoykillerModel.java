@@ -14,7 +14,7 @@ public class JoykillerModel extends HumanoidStandModel<JoykillerEntity> {
     @Override
     public void prepareMobModel(JoykillerEntity entity, float walkAnimPos, float walkAnimSpeed, float partialTick) {
         super.prepareMobModel(entity, walkAnimPos, walkAnimSpeed, partialTick);
-        if (axe != null) {
+        if (entity != null && axe != null) {
             axe.visible = entity.hasAxe();
         }
     }
