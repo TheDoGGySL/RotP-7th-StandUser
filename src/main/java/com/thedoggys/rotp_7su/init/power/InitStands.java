@@ -193,7 +193,7 @@ public class InitStands {
             () -> new SpecialsPickEntityAbility(new StandAction.Builder()));
 
     public static final RegistryObject<StandEntityAction> SPECIALS_SHOOT = ACTIONS.register("specials_shoot",
-            () -> new SpecialsOrangeShoot(new StandEntityAction.Builder().cooldown(10).standOffsetFront().holdType()));
+            () -> new SpecialsOrangeShoot(new StandEntityAction.Builder().cooldown(10).staminaCostTick(10).standOffsetFront().holdType()));
 
     public static final RegistryObject<StandEntityAction> SPECIALS_THROW = ACTIONS.register("specials_throw",
             () -> new SpecialsYellowThrow(new StandEntityAction.Builder().standOffsetFront().holdToFire(15, false)));
