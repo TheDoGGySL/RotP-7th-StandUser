@@ -4,6 +4,7 @@ import com.thedoggys.rotp_7su.capability.CapabilityHandler;
 import com.thedoggys.rotp_7su.init.*;
 import com.thedoggys.rotp_7su.init.power.InitStandEffects;
 import com.thedoggys.rotp_7su.init.power.InitStands;
+import com.thedoggys.rotp_7su.init.InitTileEntities;
 import com.thedoggys.rotp_7su.network.AddonPackets;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.apache.logging.log4j.LogManager;
@@ -25,6 +26,8 @@ public class AddonMain {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         InitParticles.PARTICLES.register((modEventBus));
+        InitBlocks.BLOCKS.register((modEventBus));
+        InitTileEntities.TILE_ENTITIES.register((modEventBus));
         InitEntities.ENTITIES.register(modEventBus);
         InitSounds.SOUNDS.register(modEventBus);
         InitStands.ACTIONS.register(modEventBus);

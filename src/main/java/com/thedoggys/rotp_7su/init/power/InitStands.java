@@ -192,6 +192,9 @@ public class InitStands {
     public static final RegistryObject<StandAction> SPECIALS_PICK_ENTITY = ACTIONS.register("specials_pick_entity",
             () -> new SpecialsPickEntityAbility(new StandAction.Builder()));
 
+    public static final RegistryObject<StandEntityAction> SPECIALS_MINE = ACTIONS.register("specials_mine",
+            () -> new SpecialsPurpleMine(new StandEntityAction.Builder().cooldown(10).staminaCost(100).standOffsetFront()));
+
     public static final RegistryObject<StandEntityAction> SPECIALS_SHOOT = ACTIONS.register("specials_shoot",
             () -> new SpecialsOrangeShoot(new StandEntityAction.Builder().cooldown(10).staminaCostTick(10).standOffsetFront().holdType()));
 
@@ -262,7 +265,8 @@ public class InitStands {
                             SPECIALS_PICK_ENTITY.get(),
                             SPECIALS_SHOOT.get(),
                             SPECIALS_THROW.get(),
-                            SPECIALS_GRENADE.get()
+                            SPECIALS_GRENADE.get(),
+                            SPECIALS_MINE.get()
                     )
                     .defaultStats(StandStats.class, new StandStats.Builder()
                             .power(9.0, 10)
