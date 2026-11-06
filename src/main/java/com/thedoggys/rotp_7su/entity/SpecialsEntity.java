@@ -4,6 +4,8 @@ import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityType;
 import com.github.standobyte.jojo.entity.stand.StandRelativeOffset;
 
+import com.thedoggys.rotp_7su.specials.SpecialsEntities;
+import com.thedoggys.rotp_7su.specials.SpecialsStandType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.world.World;
@@ -34,7 +36,21 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
         }
         return super.canAttack(entity);
     }
-    
+
+    @Override
+    public void tick() {
+        super.tick();
+        SpecialsEntities summonedEntities = null;
+        if (getUserPower() != null) {
+            summonedEntities = SpecialsStandType.getSpecialsEntities(getUserPower()).orElse(null);
+        }
+        if (summonedEntities != null) {
+            for (StandEntity stand : summonedEntities.specialsEntities) {
+                stand.copyPosition(getUser());
+            }
+        }
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     public void writeSpawnData(PacketBuffer buffer) {

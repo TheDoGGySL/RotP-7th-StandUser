@@ -68,6 +68,10 @@ public class SpecialsEntities extends StandEffectInstance {
             StandEntity standEntity = specialsEntities.get(index);
             if (!standEntity.removed) {
                 userPower.setStandManifestation(standEntity);
+                if (!world.isClientSide()) {
+                    PacketManager.sendToClientsTrackingAndSelf(
+                            new TrSetStandEntityPacket(user.getId(), standEntity.getId()), user);
+                }
             }
         }
     }

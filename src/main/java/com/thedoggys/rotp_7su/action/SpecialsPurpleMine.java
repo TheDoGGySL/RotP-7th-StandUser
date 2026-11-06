@@ -3,13 +3,11 @@ package com.thedoggys.rotp_7su.action;
 import com.github.standobyte.jojo.action.ActionConditionResult;
 import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityAction;
-import com.github.standobyte.jojo.client.ControllerStand;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.github.standobyte.jojo.util.mod.JojoModUtil;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.thedoggys.rotp_7su.AddonMain;
-import com.thedoggys.rotp_7su.entity.SpecialsEntity;
 import com.thedoggys.rotp_7su.init.InitBlocks;
 import com.thedoggys.rotp_7su.init.power.InitStandEffects;
 import com.thedoggys.rotp_7su.network.AddonPackets;
@@ -33,7 +31,6 @@ import javax.annotation.Nullable;
 
 import static com.github.standobyte.jojo.action.ActionTarget.fromRayTraceResult;
 import static com.thedoggys.rotp_7su.block.MineBlock.FACING;
-import static com.thedoggys.rotp_7su.specials.SpecialsStandType.getSpecialsEntities;
 import static net.minecraft.util.math.RayTraceResult.Type.BLOCK;
 
 public class SpecialsPurpleMine extends StandEntityAction {
@@ -63,7 +60,12 @@ public class SpecialsPurpleMine extends StandEntityAction {
 
     @Override
     protected void perform(World world, LivingEntity user, IStandPower power, ActionTarget target, @Nullable PacketBuffer extraInput) {
-        if (!world.isClientSide()) {
+        if (world.isClientSide()) {
+            Minecraft mc = Minecraft.getInstance();
+            SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower(mc.player).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+            specialsEntities.pickEntity(5);
+            AddonPackets.sendToServer(new PlayerFormationPacket(5));
+        } else {
             BlockPos blockPos = target.getBlockPos();
             World level = power.getUser().level;
             if (level != null) {
@@ -72,7 +74,6 @@ public class SpecialsPurpleMine extends StandEntityAction {
                 } else {
                     Direction face = target.getFace();
                     BlockPos minePos = blockPos.relative(face);
-
                     BlockState mineState = InitBlocks.MINE_BLOCK.get().defaultBlockState().setValue(FACING, face);
 
                     world.setBlockAndUpdate(minePos, mineState);
@@ -85,11 +86,6 @@ public class SpecialsPurpleMine extends StandEntityAction {
                     }
                 }
             }
-        } else {
-            Minecraft mc = Minecraft.getInstance();
-            SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower(mc.player).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
-            specialsEntities.pickEntity(5);
-            AddonPackets.sendToServer(new PlayerFormationPacket(5));
         }
     }
 
