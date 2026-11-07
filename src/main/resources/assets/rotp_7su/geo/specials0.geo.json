@@ -342,7 +342,7 @@
 				},
 				{
 					"name": "leftLowerLeg",
-					"parent": "leftLegXRot",
+					"parent": "leftLeg",
 					"pivot": [2, 6, 0],
 					"cubes": [
 						{
