@@ -4,14 +4,24 @@ import com.github.standobyte.jojo.action.stand.StandEntityAction;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
-import com.thedoggys.rotp_7su.entity.BulletEntity;
+import com.thedoggys.rotp_7su.init.power.InitStandEffects;
+import com.thedoggys.rotp_7su.specials.SpecialsEntities;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.TNTEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 public class SpecialsBlueGrenade extends StandEntityAction {
     public SpecialsBlueGrenade(Builder builder) {
         super(builder);
+    }
+
+    @Override
+    public void onClick(World world, LivingEntity user, IStandPower power) {
+        SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower((PlayerEntity) user).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+        specialsEntities.pickEntity(4);
+        super.onClick(world, user, power);
     }
 
     @Override

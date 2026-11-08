@@ -30,12 +30,7 @@ import static net.minecraft.block.HorizontalFaceBlock.FACE;
 public class MineBlock extends Block {
 
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
-    protected static final VoxelShape WALL_NORTH_SHAPE = Block.box(3.0D, 3.0D, 15.0D, 13.0D, 13.0D, 16.0D);
-    protected static final VoxelShape WALL_SOUTH_SHAPE = Block.box(3.0D, 3.0D, 0.0D, 13.0D, 13.0D, 1.0D);
-    protected static final VoxelShape WALL_WEST_SHAPE = Block.box(15.0D, 3.0D, 3.0D, 16.0D, 13.0D, 13.0D);
-    protected static final VoxelShape WALL_EAST_SHAPE = Block.box(0.0D, 3.0D, 3.0D, 1.0D, 13.0D, 13.0D);
     protected static final VoxelShape FLOOR_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 2.0D, 13.0D);
-    protected static final VoxelShape CEILING_SHAPE = Block.box(3.0D, 15.0D, 3.0D, 13.0D, 16.0D, 13.0D);
 
     public MineBlock(AbstractBlock.Properties properties) {
         super(properties);
@@ -49,15 +44,7 @@ public class MineBlock extends Block {
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
-        switch (state.getValue(FACING)) {
-            //case NORTH: return WALL_NORTH_SHAPE;
-            //case SOUTH: return WALL_SOUTH_SHAPE;
-            //case WEST: return WALL_WEST_SHAPE;
-            //case EAST: return WALL_EAST_SHAPE;
-            //case DOWN: return CEILING_SHAPE;
-            //case UP: return FLOOR_SHAPE;
-            default: return FLOOR_SHAPE;
-        }
+        return FLOOR_SHAPE;
     }
 
     @Override

@@ -19,6 +19,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -39,9 +40,19 @@ public class SpecialsPurpleMine extends StandEntityAction {
     }
 
     @Override
+    public void onClick(World world, LivingEntity user, IStandPower power) {
+        SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower((PlayerEntity) user).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+        specialsEntities.pickEntity(5);
+        super.onClick(world, user, power);
+    }
+
+    @Override
     protected ActionConditionResult checkSpecificConditions(LivingEntity user, IStandPower power, ActionTarget target) {
         World world = user.level;
         BlockPos blockPos = target.getBlockPos();
+        if (power.getStamina() < 0.1 * power.getMaxStamina()) {
+            return conditionMessage("low_stamina");
+        }
         if (world.getBlockEntity(blockPos) instanceof MineTileEntity) {
             return ActionConditionResult.POSITIVE;
         } else {
@@ -60,12 +71,7 @@ public class SpecialsPurpleMine extends StandEntityAction {
 
     @Override
     protected void perform(World world, LivingEntity user, IStandPower power, ActionTarget target, @Nullable PacketBuffer extraInput) {
-        if (world.isClientSide()) {
-            Minecraft mc = Minecraft.getInstance();
-            SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower(mc.player).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
-            specialsEntities.pickEntity(5);
-            AddonPackets.sendToServer(new PlayerFormationPacket(5));
-        } else {
+        if (!world.isClientSide()) {
             BlockPos blockPos = target.getBlockPos();
             World level = power.getUser().level;
             if (level != null) {

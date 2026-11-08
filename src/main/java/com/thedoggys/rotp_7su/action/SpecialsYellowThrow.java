@@ -1,23 +1,31 @@
 package com.thedoggys.rotp_7su.action;
 
 import com.github.standobyte.jojo.action.stand.StandEntityAction;
-import com.github.standobyte.jojo.entity.itemprojectile.KnifeEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
+import com.github.standobyte.jojo.entity.stand.StandPose;
 import com.github.standobyte.jojo.init.ModSounds;
-import com.github.standobyte.jojo.itemtracking.itemcap.TrackerItemStack;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
-import com.thedoggys.rotp_7su.entity.BulletEntity;
 import com.thedoggys.rotp_7su.entity.ButterflyEntity;
+import com.thedoggys.rotp_7su.init.power.InitStandEffects;
+import com.thedoggys.rotp_7su.specials.SpecialsEntities;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 public class SpecialsYellowThrow extends StandEntityAction {
     public SpecialsYellowThrow(Builder builder) {
         super(builder);
     }
+    public static final StandPose THROW = new StandPose("knifeStackThrow");
 
+    @Override
+    public void onClick(World world, LivingEntity user, IStandPower power) {
+        SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower((PlayerEntity) user).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+        specialsEntities.pickEntity(2);
+        super.onClick(world, user, power);
+    }
 
     @Override
     public void standPerform(World world, StandEntity entity, IStandPower userPower, StandEntityTask task) {
@@ -37,6 +45,9 @@ public class SpecialsYellowThrow extends StandEntityAction {
                     SoundCategory.PLAYERS, 0 * 0.5F, 0.4F / (entity.getRandom().nextFloat() * 0.4F + 0.8F));
 
             int cooldown = knivesToThrow * 3;
+            int staminaCost = knivesToThrow * 30;
+            userPower.setCooldownTimer(this, cooldown);
+            userPower.consumeStamina(staminaCost);
         }
     }
 }

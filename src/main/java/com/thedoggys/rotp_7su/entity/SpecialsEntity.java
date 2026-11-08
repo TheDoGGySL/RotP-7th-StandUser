@@ -43,10 +43,12 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
         SpecialsEntities summonedEntities = null;
         if (getUserPower() != null) {
             summonedEntities = SpecialsStandType.getSpecialsEntities(getUserPower()).orElse(null);
-        }
-        if (summonedEntities != null) {
-            for (StandEntity stand : summonedEntities.specialsEntities) {
-                stand.copyPosition(getUser());
+            if (summonedEntities != null) {
+                for (StandEntity stand : summonedEntities.specialsEntities) {
+                    if (stand.isFollowingUser()) {
+                        stand.copyPosition(getUser());
+                    }
+                }
             }
         }
     }

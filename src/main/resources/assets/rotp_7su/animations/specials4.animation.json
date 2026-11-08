@@ -180,7 +180,10 @@
 					}
 				},
 				"head_rot": {
-					"rotation": ["query.head_x_rotation", "query.head_y_rotation", 0]
+					"rotation": {
+						"0.75": [0, 10, 0],
+						"1.0": ["query.head_x_rotation", "query.head_y_rotation", 0]
+					}
 				}
 			}
 		},

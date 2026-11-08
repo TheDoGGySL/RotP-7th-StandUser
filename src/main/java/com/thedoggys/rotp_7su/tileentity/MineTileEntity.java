@@ -1,8 +1,12 @@
 package com.thedoggys.rotp_7su.tileentity;
 
 import com.github.standobyte.jojo.init.ModSounds;
+import com.github.standobyte.jojo.power.impl.stand.IStandPower;
+import com.github.standobyte.jojo.power.impl.stand.StandPower;
+import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.init.InitTileEntities;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -32,9 +36,16 @@ public class MineTileEntity extends TileEntity implements ITickableTileEntity {
 
     @Override
     public void tick() {
-        if (user == null) {
-            if (level != null && !level.isClientSide()) {
-                level.removeBlock(getBlockPos(), false);
+        if (level != null && !level.isClientSide()) {
+            if (user == null) {
+                    level.removeBlock(getBlockPos(), false);
+            } else {
+                if (user instanceof PlayerEntity) {
+                    StandPower standPower = (StandPower) IStandPower.getPlayerStandPower((PlayerEntity) user);
+                        if (standPower.getStamina() < 0.1 * standPower.getMaxStamina()) {
+                            level.removeBlock(getBlockPos(), false);
+                        }
+                }
             }
         }
         activationTicks--;

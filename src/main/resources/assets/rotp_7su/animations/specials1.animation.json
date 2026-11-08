@@ -275,13 +275,14 @@
 			"loop": "hold_on_last_frame",
 			"bones": {
 				"gun": {
-					"rotation": [-192.9303, -57.0965, -141.9542]
+					"rotation": [-184.2882, -59.7601, -120.8269],
+					"position": [0, -1.7, 0.5]
 				},
 				"rightArm": {
-					"rotation": ["-71.7061+query.head_x_rotation", "-16.6657+query.hehead_y_rotation", -5.416]
+					"rotation": ["-77.2584+query.head_x_rotation", "2.8306+query.hehead_y_rotation", -0.8998]
 				},
 				"rightForeArm": {
-					"rotation": [-7.5, 0, -30]
+					"rotation": [-17.9458, 2.5174, -68.3862]
 				},
 				"head_rot": {
 					"rotation": ["query.head_x_rotation", "query.head_y_rotation", 0]
