@@ -175,19 +175,19 @@ public class InitStands {
 
     // ======================================== Specials ========================================
 
-    public static final RegistryObject<StandEntityLightAttack> SPECIALS_PUNCH = ACTIONS.register("specials_punch",
-            () -> new StandEntityLightAttack(new StandEntityLightAttack.Builder()));
+    public static final RegistryObject<SpecialsGreenPunch> SPECIALS_PUNCH = ACTIONS.register("specials_punch",
+            () -> new SpecialsGreenPunch(new SpecialsGreenPunch.Builder()));
 
-    public static final RegistryObject<StandEntityMeleeBarrage> SPECIALS_BARRAGE = ACTIONS.register("specials_barrage",
-            () -> new StandEntityMeleeBarrage(new StandEntityMeleeBarrage.Builder()));
+    public static final RegistryObject<SpecialRedBarrage> SPECIALS_BARRAGE = ACTIONS.register("specials_barrage",
+            () -> new SpecialRedBarrage(new SpecialRedBarrage.Builder()));
 
-    public static final RegistryObject<StandEntityHeavyAttack> SPECIALS_HEAVY_PUNCH = ACTIONS.register("specials_heavy_punch",
-            () -> new StandEntityHeavyAttack(new StandEntityHeavyAttack.Builder()
+    public static final RegistryObject<SpecialGreenHeavyPunch> SPECIALS_HEAVY_PUNCH = ACTIONS.register("specials_heavy_punch",
+            () -> new SpecialGreenHeavyPunch(new SpecialGreenHeavyPunch.Builder()
                     .partsRequired(StandPart.ARMS)
                     .shiftVariationOf(SPECIALS_PUNCH).shiftVariationOf(SPECIALS_BARRAGE)));
 
-    public static final RegistryObject<StandEntityBlock> SPECIALS_BLOCK = ACTIONS.register("specials_block",
-            () -> new StandEntityBlock());
+    public static final RegistryObject<SpecialsGreenBlock> SPECIALS_BLOCK = ACTIONS.register("specials_block",
+            () -> new SpecialsGreenBlock());
 
     public static final RegistryObject<StandAction> SPECIALS_PICK_ENTITY = ACTIONS.register("specials_pick_entity",
             () -> new SpecialsPickEntityAbility(new StandAction.Builder()));

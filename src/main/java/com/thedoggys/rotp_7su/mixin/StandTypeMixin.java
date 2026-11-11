@@ -1,20 +1,13 @@
 package com.thedoggys.rotp_7su.mixin;
 
-import com.github.standobyte.jojo.power.impl.stand.IStandManifestation;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
-import com.github.standobyte.jojo.power.impl.stand.stats.StandStats;
 import com.github.standobyte.jojo.power.impl.stand.type.StandType;
 import com.thedoggys.rotp_7su.AddonMain;
-import com.thedoggys.rotp_7su.entity.SpecialsEntity;
 import com.thedoggys.rotp_7su.init.power.InitStandEffects;
 import com.thedoggys.rotp_7su.init.power.InitStands;
 import com.thedoggys.rotp_7su.specials.SpecialsEntities;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -40,7 +33,7 @@ public abstract class StandTypeMixin {
         if (power != null && power.getType() == InitStands.STAND_SPECIALS.get()) {
             SpecialsEntities specials = power.getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
             int act = specials.getSpecialsPickedEntity();
-            System.out.println("sosal: " + act);
+           // System.out.println("sosal: " + act);
             if (act >= 0 && act < rotp7suAddon_main$specialsFormTextures.length) {
                 cir.setReturnValue(rotp7suAddon_main$specialsFormTextures[act]);
             }

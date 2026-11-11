@@ -25,6 +25,7 @@ public class SpecialsOrangeShoot extends StandEntityAction {
     @Override
     public void onClick(World world, LivingEntity user, IStandPower power) {
         SpecialsEntities specialsEntities = IStandPower.getPlayerStandPower((PlayerEntity) user).getContinuousEffects().getOrCreateEffect(InitStandEffects.SPECIALS_SUMMONED_ENTITIES.get());
+        power.stopHeldAction(false);
         specialsEntities.pickEntity(1);
         super.onClick(world, user, power);
     }
