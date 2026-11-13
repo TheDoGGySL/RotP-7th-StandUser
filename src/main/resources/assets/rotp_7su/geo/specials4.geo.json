@@ -349,6 +349,37 @@
 					]
 				},
 				{
+					"name": "grenade2",
+					"parent": "leftForeArm",
+					"pivot": [5, 18, 0],
+					"cubes": [
+						{
+							"origin": [4.5, 12, -4],
+							"size": [2, 2, 7],
+							"uv": {
+								"north": {"uv": [3, 24], "uv_size": [2, 2]},
+								"east": {"uv": [38, 55], "uv_size": [7, 2]},
+								"south": {"uv": [3, 24], "uv_size": [2, 2]},
+								"west": {"uv": [38, 53], "uv_size": [7, 2]},
+								"up": {"uv": [38, 60], "uv_size": [-2, -7]},
+								"down": {"uv": [36, 60], "uv_size": [-2, -7]}
+							}
+						},
+						{
+							"origin": [4, 11.5, -7],
+							"size": [3, 3, 3],
+							"uv": {
+								"north": {"uv": [0, 24], "uv_size": [3, 3]},
+								"east": {"uv": [0, 24], "uv_size": [3, 3]},
+								"south": {"uv": [0, 24], "uv_size": [3, 3]},
+								"west": {"uv": [0, 24], "uv_size": [3, 3]},
+								"up": {"uv": [3, 27], "uv_size": [-3, -3]},
+								"down": {"uv": [3, 27], "uv_size": [-3, -3]}
+							}
+						}
+					]
+				},
+				{
 					"name": "rightArmXRot",
 					"parent": "upperPart",
 					"pivot": [-6, 22, 0],
@@ -417,6 +448,37 @@
 								"west": {"uv": [43.968, 6], "uv_size": [-3.936, 5.936]},
 								"up": {"uv": [0.032, 50.968], "uv_size": [2.936, -0.936], "uv_rotation": 180},
 								"down": {"uv": [55.968, 11.968], "uv_size": [-2.936, -3.936]}
+							}
+						}
+					]
+				},
+				{
+					"name": "grenade",
+					"parent": "rightForeArm",
+					"pivot": [-6, 18, 0],
+					"cubes": [
+						{
+							"origin": [-6.5, 12, -4],
+							"size": [2, 2, 7],
+							"uv": {
+								"north": {"uv": [3, 24], "uv_size": [2, 2]},
+								"east": {"uv": [38, 51], "uv_size": [7, 2]},
+								"south": {"uv": [34, 51], "uv_size": [2, 2]},
+								"west": {"uv": [38, 57], "uv_size": [7, 2]},
+								"up": {"uv": [38, 60], "uv_size": [-2, -7]},
+								"down": {"uv": [36, 60], "uv_size": [-2, -7]}
+							}
+						},
+						{
+							"origin": [-7, 11.5, -7],
+							"size": [3, 3, 3],
+							"uv": {
+								"north": {"uv": [0, 24], "uv_size": [3, 3]},
+								"east": {"uv": [0, 24], "uv_size": [3, 3]},
+								"south": {"uv": [0, 24], "uv_size": [3, 3]},
+								"west": {"uv": [0, 24], "uv_size": [3, 3]},
+								"up": {"uv": [3, 27], "uv_size": [-3, -3]},
+								"down": {"uv": [3, 27], "uv_size": [-3, -3]}
 							}
 						}
 					]

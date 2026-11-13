@@ -52,7 +52,7 @@ public class MineTileEntity extends TileEntity implements ITickableTileEntity {
         setChanged();
         if (activationTicks == 0) {
             if (level != null && !level.isClientSide()) {
-                level.explode(this.user, this.getBlockPos().getX(), this.getBlockPos().getY(), this.getBlockPos().getZ(),3, Explosion.Mode.NONE);
+                level.explode(this.user, this.getBlockPos().getX(), this.getBlockPos().getY(), this.getBlockPos().getZ(),2, Explosion.Mode.NONE);
                 level.removeBlock(getBlockPos(), false);
             }
         }
@@ -65,7 +65,7 @@ public class MineTileEntity extends TileEntity implements ITickableTileEntity {
         this.activationTicks = 10;
         this.active = true;
         if (level != null && !level.isClientSide() && instant) {
-            level.explode(this.user, this.getBlockPos().getX(), this.getBlockPos().getY(), this.getBlockPos().getZ(),3, Explosion.Mode.NONE);
+            level.explode(this.user, this.getBlockPos().getX(), this.getBlockPos().getY(), this.getBlockPos().getZ(),2, Explosion.Mode.NONE);
             level.removeBlock(getBlockPos(), false);
         }
     }

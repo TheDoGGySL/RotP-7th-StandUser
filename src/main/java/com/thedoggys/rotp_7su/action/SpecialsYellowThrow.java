@@ -18,7 +18,7 @@ public class SpecialsYellowThrow extends StandEntityAction {
     public SpecialsYellowThrow(Builder builder) {
         super(builder);
     }
-    public static final StandPose THROW = new StandPose("knifeStackThrow");
+    public static final StandPose KNIFE_THROW = new StandPose("knifeStackThrow");
 
     @Override
     public void onClick(World world, LivingEntity user, IStandPower power) {

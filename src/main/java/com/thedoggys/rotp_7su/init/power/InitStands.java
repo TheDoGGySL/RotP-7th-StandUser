@@ -199,10 +199,10 @@ public class InitStands {
             () -> new SpecialsOrangeShoot(new StandEntityAction.Builder().cooldown(10).standPose(SpecialsOrangeShoot.SHOOT).staminaCostTick(10).standOffsetFront().holdType()));
 
     public static final RegistryObject<StandEntityAction> SPECIALS_THROW = ACTIONS.register("specials_throw",
-            () -> new SpecialsYellowThrow(new StandEntityAction.Builder().standOffsetFront().standPose(SpecialsYellowThrow.THROW).holdToFire(15, false)));
+            () -> new SpecialsYellowThrow(new StandEntityAction.Builder().standOffsetFront().standPose(SpecialsYellowThrow.KNIFE_THROW).holdToFire(15, false)));
 
     public static final RegistryObject<StandEntityAction> SPECIALS_GRENADE = ACTIONS.register("specials_grenade",
-            () -> new SpecialsBlueGrenade(new StandEntityAction.Builder().standOffsetFront().holdToFire(15, false)));
+            () -> new SpecialsBlueGrenade(new StandEntityAction.Builder().cooldown(30).standOffsetFront().standPose(SpecialsBlueGrenade.GRENADE_THROW).holdToFire(15, false)));
 
 
     /*

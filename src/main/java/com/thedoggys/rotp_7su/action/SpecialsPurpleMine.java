@@ -84,6 +84,7 @@ public class SpecialsPurpleMine extends StandEntityAction {
                     BlockState mineState = InitBlocks.MINE_BLOCK.get().defaultBlockState().setValue(FACING, face);
 
                     world.setBlockAndUpdate(minePos, mineState);
+                    power.consumeStamina(250);
                     TileEntity te = world.getBlockEntity(minePos);
                     if (te instanceof MineTileEntity) {
                         MineTileEntity mine = (MineTileEntity) te;
@@ -105,7 +106,7 @@ public class SpecialsPurpleMine extends StandEntityAction {
             BlockPos pos = fromRayTraceResult(rayTrace).getBlockPos();
             World level = power.getUser().level;
             if (level != null && level.getBlockEntity(pos) instanceof MineTileEntity) {
-                ResourceLocation tex = new ResourceLocation(AddonMain.MOD_ID, "textures/power/sp6.png");
+                ResourceLocation tex = new ResourceLocation(AddonMain.MOD_ID, "textures/action/specials_remove_mine.png");
                 mc.getTextureManager().bind(tex);
                 AbstractGui.blit(matrixStack, (int) x, (int) y, 16, 16, 0, 0, 16, 16, 16, 16);
             } else
