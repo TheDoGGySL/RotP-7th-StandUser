@@ -27,6 +27,15 @@
   "gui.rotp_7su.fourth": "Fourth",
   "gui.rotp_7su.fifth": "Fifth",
   "gui.rotp_7su.sixth": "Sixth",
+  "action.rotp_7su.specials_block": "Block",
+  "action.rotp_7su.specials_punch": "Punch",
+  "action.rotp_7su.specials_barrage": "Barrage",
+  "action.rotp_7su.specials_heavy_punch": "Heavy Punch",
+  "action.rotp_7su.specials_pick_entity": "Pick Special",
+  "action.rotp_7su.specials_mine": "Place a Mine",
+  "action.rotp_7su.specials_shoot": "Shoot",
+  "action.rotp_7su.specials_throw": "Throw Knives",
+  "action.rotp_7su.specials_grenade": "Throw Grenades",
   "action.rotp_7su.joykiller_block": "Block",
   "action.rotp_7su.joykiller_light_attack": "Light attack",
   "action.rotp_7su.joykiller_axe_barrage": "Axe barrage",
@@ -47,5 +56,7 @@
   "action.rotp_7su.wipe_presence": "Wipe Presence",
   "jojo.message.action_condition.stand_not_active": "You need your stand to be summoned",
   "jojo.message.action_condition.not_enough_stamina": "You need more stamina to perform this action",
-  "jojo.message.action_condition.aura_already_active": "You already have other aura enabled"
+  "jojo.message.action_condition.aura_already_active": "You already have other aura enabled",
+  "jojo.message.action_condition.need_floor": "You need a floor to place a mine",
+  "jojo.message.action_condition.low_stamina": "You don't have the stamina for this"
 }
