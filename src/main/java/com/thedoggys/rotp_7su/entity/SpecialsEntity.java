@@ -46,7 +46,7 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
             if (summonedEntities != null) {
                 for (StandEntity stand : summonedEntities.specialsEntities) {
                     if (stand.isFollowingUser()) {
-                        stand.copyPosition(getUser());
+                        stand.updatePosition();
                     }
                 }
             }
