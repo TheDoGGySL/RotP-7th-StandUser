@@ -4,6 +4,7 @@ import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.github.standobyte.jojo.util.mc.reflection.ClientReflection;
 import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.capability.LivingDataProvider;
+import com.thedoggys.rotp_7su.entity.SpecialsEntity;
 import com.thedoggys.rotp_7su.init.InitEffects;
 import com.thedoggys.rotp_7su.init.power.InitStands;
 import net.minecraft.client.Minecraft;
@@ -20,6 +21,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = AddonMain.MOD_ID, value = Dist.CLIENT)
@@ -95,6 +97,13 @@ public class ClientEvents {
             if (player.getRemainingFireTicks()<= 0) {
                 player.setRemainingFireTicks(10);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && event.side == LogicalSide.CLIENT) {
+            SpecialsEntity.updatePositionAfterUserTick(event.player);
         }
     }
 }

@@ -13,6 +13,8 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpawnData {
     private int index = 0;
+    private StandRelativeOffset formationOffset = null;
+    private long lastClientTickTime = -1;
 
     public SpecialsEntity(StandEntityType<? extends StandEntity> type, World world) {
         super(type, world);
@@ -27,6 +29,16 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
     }
     
     @Override
+    public void setDefaultOffsetFromUser(StandRelativeOffset offset) {
+        super.setDefaultOffsetFromUser(offset);
+        this.formationOffset = offset;
+    }
+
+    public StandRelativeOffset getFormationOffset() {
+        return formationOffset != null ? formationOffset : getDefaultOffsetFromUser();
+    }
+
+    @Override
     public boolean canAttack(LivingEntity entity) {
         if (entity instanceof StandEntity) {
             LivingEntity user = this.getUser();
@@ -40,6 +52,9 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
     @Override
     public void tick() {
         super.tick();
+        if (level.isClientSide()) {
+            lastClientTickTime = level.getGameTime();
+        }
         SpecialsEntities summonedEntities = null;
         if (getUserPower() != null) {
             summonedEntities = SpecialsStandType.getSpecialsEntities(getUserPower()).orElse(null);
@@ -58,8 +73,8 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
     public void writeSpawnData(PacketBuffer buffer) {
         super.writeSpawnData(buffer);
         buffer.writeVarInt(index);
-        buffer.writeDouble(getDefaultOffsetFromUser().getLeft());
-        buffer.writeDouble(getDefaultOffsetFromUser().getForward());
+        buffer.writeDouble(getFormationOffset().getLeft());
+        buffer.writeDouble(getFormationOffset().getForward());
     }
 
     @Override
@@ -69,5 +84,18 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
         double left = additionalData.readDouble();
         double forward = additionalData.readDouble();
         setDefaultOffsetFromUser(StandRelativeOffset.withYOffset(left, 0.2, forward));
+    }
+
+    public static void updatePositionAfterUserTick(LivingEntity user) {
+        long gameTime = user.level.getGameTime();
+        for (SpecialsEntity stand : user.level.getEntitiesOfClass(SpecialsEntity.class, user.getBoundingBox().inflate(16), 
+                entity -> entity.getUser() == user)) {
+            if (stand.lastClientTickTime == gameTime && stand.isFollowingUser()) {
+                if (!stand.getCurrentTask().isPresent()) {
+                    stand.defaultRotation();
+                }
+                stand.updatePosition();
+            }
+        }
     }
 }
