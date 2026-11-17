@@ -2,6 +2,7 @@ package com.thedoggys.rotp_7su.entity;
 
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityType;
+import com.github.standobyte.jojo.entity.stand.StandPose;
 import com.github.standobyte.jojo.entity.stand.StandRelativeOffset;
 
 import com.thedoggys.rotp_7su.specials.SpecialsEntities;
@@ -49,11 +50,16 @@ public class SpecialsEntity extends StandEntity implements IEntityAdditionalSpaw
         return super.canAttack(entity);
     }
 
+    public static final StandPose PICK_POSE = new StandPose("specialsPick");
+    public int pickPoseTick = 0;
     @Override
     public void tick() {
         super.tick();
         if (level.isClientSide()) {
             lastClientTickTime = level.getGameTime();
+            if (getStandPose() == PICK_POSE && tickCount - pickPoseTick >= 20) {
+                setStandPose(StandPose.IDLE);
+            }
         }
         SpecialsEntities summonedEntities = null;
         if (getUserPower() != null) {

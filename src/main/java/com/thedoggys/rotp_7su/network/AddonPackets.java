@@ -5,6 +5,7 @@ import com.thedoggys.rotp_7su.AddonMain;
 import com.thedoggys.rotp_7su.network.packets.client.PlayerFormationPacket;
 import com.thedoggys.rotp_7su.network.packets.server.MiraclesAura2Packet;
 import com.thedoggys.rotp_7su.network.packets.server.MiraclesAuraPacket;
+import com.thedoggys.rotp_7su.network.packets.server.SpecialsPickPosePacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.ResourceLocation;
@@ -44,6 +45,8 @@ public class AddonPackets {
                 MiraclesAuraPacket::encode,MiraclesAuraPacket::decode,MiraclesAuraPacket::handle);
         channel.registerMessage(packetIndex++, MiraclesAura2Packet.class,
                 MiraclesAura2Packet::encode, MiraclesAura2Packet::decode,MiraclesAura2Packet::handle);
+        channel.registerMessage(packetIndex++, SpecialsPickPosePacket.class,
+                SpecialsPickPosePacket::encode, SpecialsPickPosePacket::decode, SpecialsPickPosePacket::handle);
 
     }
 
